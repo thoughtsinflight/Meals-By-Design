@@ -1,7 +1,7 @@
 const express = require("express");
-const exphbs = require("express-handlebars")
+const exphbs = require("express-handlebars");
 const morgan = require("morgan");
-// const db = require("./modules/index")
+const db = require("./models/index");
 const PORT = process.env.PORT || 4650;
 const app = express();
 
@@ -15,8 +15,11 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Routes
-app.use(require("./controllers/staticController"))
-//Listen
-app.listen(PORT, () => {
-    console.log("Server listening on: http://localhost:" + PORT);
-});
+app.use(require("./controllers/staticController"));
+
+//Synchronize my schema
+db.sequelize.sync({ force: true }).then(() => {
+    app.listen(PORT, () => {
+        console.log("Server listening on: http://localhost:" + PORT);
+    });
+})
