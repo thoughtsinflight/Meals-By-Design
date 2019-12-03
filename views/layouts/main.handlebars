@@ -1,12 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project 2</title>
-</head>
 <body>
-    {{{ body }}}
+  <!-- Button Header -->
+  <div class="grid-x grid-padding-y">
+    <div class="cell" id="buttonGroup">
+      <a class="button primary" id="mondayButton">Monday</a>
+      <a class="button primary" id="tuesdayButton">Tuesday</a>
+      <a class="button primary" id="wednesdayButton">Wednesday</a>
+      <a class="button primary" id="thursdayButton">Thursday</a>
+      <a class="button primary" id="fridayButton">Friday</a>
+      <a class="button primary" id="saturdayButton">Saturday</a>
+      <a class="button primary" id="sundayButton">Sunday</a>
+    </div>
+  </div>
+  <!-- End Button Header -->
+
+  <!-- Start of Main Forms -->
+
+  <!-- Left Form -->
+  <div class="grid-x grid-padding-x grid-padding-y">
+    <div class="cell small-6 paperSection">
+      <div class="card" style="width: 45vw;">
+        <div class="card-divider">
+          <h4 class="sectionHead">Today's Menu</h4>
+        </div>
+        <div class="card-section">
+          <ul id="todaysMenuSection">
+            <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End of left form -->
+
+    <!-- Start of Right form -->
+    <div class="cell small-6 paperSection">
+      <div class="card" style="width: 45vw;">
+        <div class="card-divider">
+          <h4 class="sectionHead">Add Item</h4>
+        </div>
+        <!-- menu item form -->
+        <div class="card-section" id="ingredientsList">
+          <div class="cell">
+            <label>Menu Item:
+              <input type="text" id="newMenuItem">
+            </label>
+          </div>
+          <!-- add ingredient form -->
+          <div class="cell ingredientForm">
+            <label id="addIngredients">Add Ingredients:
+              <input type="text" name="newIngredient">
+              <input type="text" name="newIngredient">
+              <input type="text" name="newIngredient">
+            </label>
+
+          </div>
+          <div class="cell" id="ingredientsButtonDiv">
+            <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
+          </div>
+        </div>
+        <button type="button" class="success button" id="addMenuItemButton">Add Menu Item</button>
+      </div>
+    </div>
+  </div>
+  <!-- end of right form -->
+
+  <!-- End of Main Forms -->
+
+  <script src="./public/js/vendor/jquery.js"></script>
+  <script src="./public/js/vendor/what-input.js"></script>
+  <script src="./public/js/vendor/foundation.js"></script>
+  <script src="./public/js/app.js"></script>
 </body>
-</html>
