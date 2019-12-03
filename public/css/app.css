@@ -1,0 +1,29 @@
+body{
+    background-image: url(../assets/images/kitchenbackdrop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#buttonGroup{
+    text-align: center;
+    width: 90vw;
+}
+.primary{
+    border-radius: 5%;
+}
+.card{
+    height: 80vh;
+    background-image: url(../assets/images/notebook2.PNG);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card-divider{
+    opacity: 0.1;
+}
+.ingredientForm{
+    width: 40vw;
+    padding-left: 15vw;
+}
+#moreIngredientsButton{
+    float: right;
+}
+
