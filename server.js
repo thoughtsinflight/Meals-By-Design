@@ -44,6 +44,14 @@ app.use(passport.session())
 // Routes
 app.use(require("./controllers/staticController"));
 
+app.post('/login', 
+    passport.authenticate('local', {
+        failureRedirect: '/login'
+    }),
+    (req, res) => {
+        res.redirect('/');
+    });
+
 //Synchronize my schema
 db.sequelize.sync({ force: process.env.NODE_ENV !== "production" }).then(() => {
     app.listen(PORT, () => {
