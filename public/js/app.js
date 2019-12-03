@@ -1,7 +1,7 @@
 $(document).foundation()
-
 const allMenuItems = [];
 const allIngredients = [];
+
 
 
 function clearTodaysMenu(){
