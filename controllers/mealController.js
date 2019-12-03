@@ -18,17 +18,39 @@ router.get("/ingredients", (req, res) => {
 
 //get meal individually by id
 router.get("/:id", (req, res) => {
-    Meal.findbyPK(req.params.id).then(meal => (res.send(meal)));
+    Meal.findByPk(req.params.id).then(meal => (res.send(meal)));
 });
 
 //get meal by id and its associated ingredients
 router.get("/:id/ingredients", (req, res) => {
-    Meal.findbyPK(req.params.id).then(meal => (res.send(meal)));
+    Meal.findByPk(req.params.id)
+        .then((meal) => {
+            meal.getIngredients()
+                .then((ingredients) => {
+                    const formattedMeal = {}
+                    formattedMeal.id = meal.id;
+                    formattedMeal.name = meal.name;
+                    formattedMeal.ingredients = [];
+                    for (let i = 0; i < ingredients.length; i++) {
+                        formattedMeal.ingredients.push({ id: ingredients[i].id, name: ingredients[i].name });
+                    }
+                    console.log(formattedMeal);
+
+                    res.send(formattedMeal);
+                })
+        });
 });
 
 //post - create
 router.post("/", (req, res) => {
-    Meal.findOrCreate({ name: req.body.name, ingredients: req.body.ingredients }).then(meal => {
+    Meal.findOrCreate({
+        name: req.body.name,
+        ingredients: req.body.ingredients
+    }, {
+        include: [{
+            association: Meal.Ingredients
+          }]
+    }).then(meal => {
         console.log(meal);
         res.send(meal)
     });
@@ -40,8 +62,8 @@ router.post("/", (req, res) => {
 //delete
 router.delete("/:id", (req, res) => {
     Meal.findbyPK(req.params.id)
-    .then(meal => (meal.destroy()))
-    .then(() => (res.send("Meal destroyed!")));
+        .then(meal => (meal.destroy()))
+        .then(() => (res.send("Meal destroyed!")));
 });
 
 

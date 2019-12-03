@@ -20,6 +20,9 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static("public"));
 
+const staticRouter = require("./controllers/staticController");
+const ingredientRouter = require("./controllers/ingredientController");
+const mealRouter = require("./controllers/mealController");
 // View Engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -46,8 +49,10 @@ app.use(require("./controllers/staticController"));
 app.use(require("./controllers/userController"));
 
 //Synchronize my schema
-db.sequelize.sync({ force: process.env.NODE_ENV !== "production" }).then(() => {
+//This will blow out the seed data, so removing for api testing.
+//{ force: process.env.NODE_ENV !== "production" }
+db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log("Server listening on: http://localhost:" + PORT);
     });
-})
+});

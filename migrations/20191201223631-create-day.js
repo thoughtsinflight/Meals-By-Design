@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      dayId: {
-        type: Sequelize.INTEGER
-      },
       day: {
         type: Sequelize.STRING
       },
