@@ -52,13 +52,27 @@ $("#moreIngredientsButton").on("click", () => {
 })
 // click listener for add menu item button
 $("#addMenuItemButton").on("click", () => {
-    const menuItem = $(":input#newMenuItem").val();
-    allMenuItems.push(menuItem);
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
         return $(elem).val();
     }).get();
-    allIngredients.push(ingredients)
-});
-console.log(allMenuItems);
-console.log(allIngredients)
 
+    const ingredientsObj = ingredients.reduce(function(s, a){
+        s.push({name: a});
+        return s;
+    }, [])
+    const newMeal = {
+        menuItem: $(":input#newMenuItem").val(),
+        ingredients: [
+            ingredientsObj
+        ]
+      }
+    
+   console.log(newMeal)
+});
+
+
+
+
+
+// const menuItem = $(":input#newMenuItem").val();
+//     allMenuItems.push(menuItem);
