@@ -33,11 +33,11 @@
   <!-- Start of Main Forms -->
 
   <!-- Left Form -->
-  <div class="cell medium-auto medium-cell-block-container">
+  <div class="cell medium-auto medium-cell-block-container" >
     <div class="grid-x grid-padding-x grid-padding-y-small cell">
       <div class="cell small-6 small-cell-block-y">
-        <div class="card" style="width: 45vw;">
-            <h4 class="sectionHead">Today's Menu</h4>
+        <div class="card" style="width: 45vw;" id="menuBox">
+            <h4 class="sectionHead">Today's Menu</h4><hr>
           <div class="card-section">
             <ul id="todaysMenuSection">
               <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
@@ -49,10 +49,10 @@
   
       <!-- Start of Right form -->
       <div class="cell small-6 small-cell-block-y">
-        <div class="card" style="width: 45vw;">
-            <h4 class="sectionHead">Add Item</h4>
+        <div class="card" style="width: 45vw;"  id ="itemBox">
+            <h4 class="sectionHead">Add Item</h4><hr>
           <!-- menu item form -->
-          <label>Select Weekday
+          <label>Select Weekday:
               <select id="weekdaySelect">
                 <option value="1">Monday</option>
                 <option value="2">Tuesday</option>
