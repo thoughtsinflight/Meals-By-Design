@@ -5,7 +5,7 @@ const passport = require("../config/passport");
 // Authentication middleware that works with localStrategy from passport
 // Valid login will go to user dashboard. Invalid will redirect back to login page
 // Password is hashed via user model setup
-app.post("/api/login", 
+app.post("/login", 
     passport.authenticate("local", {
         successRedirect: "/dashboard",
         failureRedirect: "/login"
@@ -15,7 +15,7 @@ app.post("/api/login",
 );
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
-app.post("/api/signup", (req, res) => {
+app.post("/signup", (req, res) => {
     db.user.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -36,7 +36,7 @@ app.get("/logout", (req, res) => {
 
 // Route to collect user data for client side
 // Used for sessions
-app.get("/api/user-info", (req, res) => {
+app.get("/", (req, res) => {
     // When no valid user is logged in, send an empty object
     if(!req.user) {
         res.json({})
