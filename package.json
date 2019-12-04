@@ -1,11 +1,12 @@
 {
-  "name": "Project_2",
+  "name": "mealsbydesign",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application to plan your meals and simplify weekly grocery shopping.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/thoughtsinflight/Project_2#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
