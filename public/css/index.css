@@ -6,3 +6,17 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  h1{
+    margin-top: 5vh;
+  }
+  h1, h3{
+    text-align: center;
+  }
+
+  #navButtons{
+    text-align: center;
+  }
+  #mainBody{
+    margin: auto 10vw;
+  }
+  
