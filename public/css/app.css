@@ -1,3 +1,6 @@
+*{
+    font-family: Kalma !important;
+  }
 body{
     background-image: url(../assets/images/kitchenbackdrop.jpg);
     background-repeat: no-repeat;
@@ -10,14 +13,20 @@ body{
 .primary{
     border-radius: 5%;
 }
+#addMenuItemButton{
+    background-color: blue;
+}
+#todaysMenuSection{
+    text-transform: capitalize;
+}
 .card{
     height: 80vh;
-    background-image: url(../assets/images/notebook2.PNG);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgb(107, 181, 250);
+    opacity: 0.8;
 }
-.card-divider{
-    opacity: 0.1;
+.sectionHead{
+    text-align: center;
+    padding-top: 2vh;
 }
 .ingredientForm{
     width: 40vw;
@@ -31,7 +40,35 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.large {
+    box-shadow: 0px 1px 3px 0px #f29c93;
+    background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+    background-color: #fe1a00;
+    border-radius: 5px;
+    border: 1px solid #d83526;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif ;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 2px 1px #b23e35;
+}
+.large:hover{
+    background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+    background-color: #ce0100;
+}
+.large:active{
+    position: relative;
+    top: 1px;
+}
+.dropdown {
+    border-radius: 0;
+}
+.dropdown-pane {
+    border-width: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
 @media screen and (max-width: 39.9375em) {
     .button.small-only-expanded {
       display: block;
@@ -44,6 +81,6 @@ body{
     }
     .day {
         border-radius: 0;
-        margin-bottom: 1vh;
+        margin-bottom: .5vh;
     }
 }
