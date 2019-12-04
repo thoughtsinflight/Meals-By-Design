@@ -6,19 +6,15 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.card{
-  align-content: center;
-  text-align: center;
-}
-
 .formHead{
   text-align: center;
 }
 .card{
   height: 50vh;
   width: 50vw;
-  margin: 0 20vw;
+  margin: 5vh 20vw;
+  align-content: center;
+  text-align: center;
   background-color: rgb(107, 181, 250);
   opacity: 0.7;
 }
@@ -29,7 +25,6 @@ body{
   height: 100vh;
   flex-direction: column-reverse ;
 }
-/* #logInField{
-  text-align: center;
-  margin-top: 15vh;
-} */
+input{
+  margin: 0;
+}
