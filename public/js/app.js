@@ -63,7 +63,7 @@ $("#addMenuItemButton").on("click", () => {
     
     const newMeal = {
         dayId: $(":input#weekdaySelect").val(),
-        menuItem: $(":input#newMenuItem").val(),
+        name: $(":input#newMenuItem").val(),
         ingredients: [
             ingredientsObj
         ]
