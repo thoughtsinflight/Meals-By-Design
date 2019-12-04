@@ -7,12 +7,15 @@ console.log(existingUser);
 });
  
 $("#signupButton").on("click", () => {
-    const newUser ={
-    newEmail: $(":input#newEmail").val(),
-    newFirstName: $(":input#newFirstName").val(),
-    newLastName: $(":input#newLastName").val(),
-    newPassword: $(":input#newPassword").val(),
-    newPasswordConfirm: $(":input#newPasswordConfirm").val(),
+    const newUser ={    
+    firstName: $("#newFirstName").val(),
+    lastName: $("#newLastName").val(),
+    email: $("#newEmail").val(),
+    password: $("#newPassword").val(),
+}
+     
+    if (newUser.password !== $("#newPasswordConfirm").val()){
+        alert("Confirm password must match password")
     }
     console.log(newUser)
 });
