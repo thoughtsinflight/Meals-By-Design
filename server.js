@@ -23,6 +23,7 @@ app.use(express.static("public"));
 const staticRouter = require("./controllers/staticController");
 const ingredientRouter = require("./controllers/ingredientController");
 const mealRouter = require("./controllers/mealController");
+const dayRouter = require("./controllers/dayController");
 // View Engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");

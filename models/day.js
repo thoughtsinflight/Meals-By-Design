@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Day.associate = function(models) {
     // associations can be defined here
-    Day.belongsToMany(models.Meal, { through: 'DayMeals', as: 'Meal' });
+    Day.belongsToMany(models.Meal, { through: 'DayMeals', as: 'Meals' });
   };
   return Day;
 };

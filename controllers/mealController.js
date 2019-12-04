@@ -3,7 +3,7 @@ const db = require("../models/index");
 const path = require("path");
 
 const Meal = db.sequelize.import(path.resolve(__dirname, "../models/meal.js"));
-
+const Ingredient = db.sequelize.import(path.resolve(__dirname, "../models/ingredient.js"));
 //get - read
 
 //get all meals sans ingredients
@@ -42,18 +42,14 @@ router.get("/:id/ingredients", (req, res) => {
 });
 
 //post - create
-router.post("/", (req, res) => {
-    Meal.findOrCreate({
-        name: req.body.name,
-        ingredients: req.body.ingredients
-    }, {
-        include: [{
-            association: Meal.Ingredients
-          }]
-    }).then(meal => {
-        console.log(meal);
-        res.send(meal)
+router.post("/", async (req, res) => {
+    //req.body.ingredients should be an array of objects of the format:
+    // [{name: "flour"}, {name: "butter"}]
+    const meal = await Meal.findOrCreate({
+        where: { name: req.body.name}
     });
+    console.log(Object.keys(meal.__proto__));
+    res.json(meal);
 });
 
 //put - update
