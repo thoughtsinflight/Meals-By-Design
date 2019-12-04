@@ -2,7 +2,9 @@ $(document).foundation()
 const allMenuItems = [];
 const allIngredients = [];
 
-
+const curDay = moment().weekday(-7);
+console.log(curDay);
+$("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
 function clearTodaysMenu(){
     $("ul#todaysMenuSection li").remove();
@@ -63,7 +65,7 @@ $("#addMenuItemButton").on("click", () => {
     
     const newMeal = {
         dayId: $(":input#weekdaySelect").val(),
-        menuItem: $(":input#newMenuItem").val(),
+        name: $(":input#newMenuItem").val(),
         ingredients: [
             ingredientsObj
         ]
