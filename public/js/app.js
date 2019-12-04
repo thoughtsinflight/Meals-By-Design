@@ -3,7 +3,6 @@ const allMenuItems = [];
 const allIngredients = [];
 
 const curDay = moment().weekday(-7);
-console.log(curDay);
 $("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
 function clearTodaysMenu(){

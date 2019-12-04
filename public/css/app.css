@@ -6,6 +6,14 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+h4 {
+    color: #ffffff;
+    text-shadow: 2px 2px #8486f6;
+}
+label {
+    color: #ffffff;
+    text-shadow: 2px 2px #8486f6;
+}
 #buttonGroup{
     text-align: center;
     width: 90vw;
@@ -14,7 +22,26 @@ body{
     border-radius: 5%;
 }
 #addMenuItemButton{
-    background-color: blue;
+    box-shadow: 0px 10px 14px -7px #9acc85;
+    background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+    background-color:#74ad5a;
+    border-radius: 0px;
+    border:1px solid #3b6e22;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif ;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 2px 1px #92b879;
+}
+#addMenuItemButton:hover{
+    background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+	background-color:#68a54b;
+}
+#addMenuItemButton:active{
+    position: relative;
+    top: 1px;
 }
 #todaysMenuSection{
     text-transform: capitalize;
@@ -34,6 +61,28 @@ body{
 }
 #moreIngredientsButton{
     float: right;
+    box-shadow: 0px 10px 14px -7px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:4px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+#moreIngredientsButton:hover {
+    background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+#moreIngredientsButton:active {
+    position:relative;
+	top:1px;
 }
 .dropdown-pane {
     background-image: url(../assets/images/nadine-primeau--bLkT8wGV0I-unsplash.jpg);
@@ -41,22 +90,22 @@ body{
     background-size: cover;
 }
 .large {
-    box-shadow: 0px 1px 3px 0px #f29c93;
-    background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
-    background-color: #fe1a00;
+    box-shadow: 0px 10px 14px -7px #9acc85;
+    background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+    background-color:#74ad5a;
     border-radius: 5px;
-    border: 1px solid #d83526;
+    border:1px solid #3b6e22;
     cursor: pointer;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif ;
     font-size: 15px;
     font-weight: bold;
     text-decoration: none;
-    text-shadow: 0px 2px 1px #b23e35;
+    text-shadow: 0px 2px 1px #92b879;
 }
 .large:hover{
-    background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
-    background-color: #ce0100;
+    background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+	background-color:#68a54b;
 }
 .large:active{
     position: relative;
@@ -69,6 +118,57 @@ body{
     border-width: 0px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+#menuBox {
+    box-shadow: 3px 4px 8px 3px rgba(0, 0, 0, 0.2);
+    border-color: #8486f6;
+}
+#itemBox {
+    box-shadow: 3px 4px 8px 3px rgba(0, 0, 0, 0.2);
+    border-color: #8486f6;
+}
+
+
+hr {
+    border: 0 solid #eeedef;
+    border-top-width: 1px;
+    height: 0;
+    margin: 30px auto;
+    clear: both;
+    display: block;
+    width: 400px;
+    position: relative;
+}
+hr:before {
+    content: " ";
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background-color: #999;
+}
+hr:before {
+    left: 0;
+    bottom: -3px;
+  box-shadow: 400px 0 0 -1px #999, 400px 0 0 0 #aaa;
+}
+hr:after {
+    content:url(../assets/images/chantal-garnier-910GanwBoew-unsplash.jpg);
+    display:block;
+    position:absolute;
+    left:50%;
+    height:50px;
+    width:50px;
+    margin:-25px 0 0 -25px;
+    border-radius:50px;
+    overflow:hidden;
+    box-shadow: 0 0 0 1px #eef, 0 0 5px;
+}
+
+
+
+
+
 @media screen and (max-width: 39.9375em) {
     .button.small-only-expanded {
       display: block;
