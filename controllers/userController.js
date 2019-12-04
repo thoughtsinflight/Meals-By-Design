@@ -1,4 +1,6 @@
 const db = require("../models");
+const express = require("express");
+const app = express();
 const passport = require("../config/passport");
 
 
@@ -49,3 +51,5 @@ app.get("/api/user-info", (req, res) => {
         });
     }
 });
+
+module.exports = app;
