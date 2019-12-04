@@ -4,6 +4,7 @@ const path = require("path");
 
 const Meal = db.sequelize.import(path.resolve(__dirname, "../models/meal.js"));
 const Ingredient = db.sequelize.import(path.resolve(__dirname, "../models/ingredient.js"));
+const Day = db.sequelize.import(path.resolve(__dirname, "../models/day.js"));
 //get - read
 
 //get all meals sans ingredients
@@ -45,11 +46,19 @@ router.get("/:id/ingredients", (req, res) => {
 router.post("/", async (req, res) => {
     //req.body.ingredients should be an array of objects of the format:
     // [{name: "flour"}, {name: "butter"}]
-    const meal = await Meal.findOrCreate({
-        where: { name: req.body.name}
+    const { name: mealName, ingredients, dayId } = req.body;
+    const [meal] = await Meal.findOrCreate({
+        where: { name: mealName }
     });
-    console.log(Object.keys(meal.__proto__));
-    res.json(meal);
+    const day = await Day.findByPk(dayId)
+    await meal.addDay(day);
+    ingredients.forEach(async (ingredient) => {
+        const [focIngredient] = await Ingredient.findOrCreate({ where: ingredient });
+        await meal.addIngredient(focIngredient);
+    })
+    const currentIngredients = await meal.getIngredients();
+    console.log(meal);
+    res.send({ day, meal, currentIngredients });
 });
 
 //put - update
