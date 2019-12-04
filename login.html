@@ -18,19 +18,19 @@
             <div class="card-section">
                 <form id="logInBars">
                     <div class="medium-6 cell">
-                        <label>Username:
-                            <input type="text" placeholder="Username">
+                        <label id="existingEmail">Email:
+                            <input type="text" placeholder="Email">
                         </label>
                     </div>
                     <div class="medium-6 cell">
-                        <label>Password:
+                        <label id="existingPassword">Password:
                             <input type="text" placeholder="Password">
                         </label>
                     </div>
                 </form>
                 <div class="grid-x">
                     <div class="cell">
-                        <a class="button primary" href="#">Login!</a>
+                        <a class="button primary" id="loginButton" href="#">Login!</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
     <script src="./public/js/vendor/jquery.js"></script>
     <script src="./public/js/vendor/what-input.js"></script>
     <script src="./public/js/vendor/foundation.js"></script>
-    <script src="./public/js/app.js"></script>
+    <script src="./public/js/logIn.js"></script>
 </body>
 
 </html>
