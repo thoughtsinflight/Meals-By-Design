@@ -1,3 +1,6 @@
+*{
+    font-family: Kalma !important;
+  }
 body{
     background-image: url(../assets/images/kitchenbackdrop.jpg);
     background-repeat: no-repeat;
@@ -10,14 +13,20 @@ body{
 .primary{
     border-radius: 5%;
 }
+#addMenuItemButton{
+    background-color: blue;
+}
+#todaysMenuSection{
+    text-transform: capitalize;
+}
 .card{
     height: 80vh;
-    background-image: url(../assets/images/notebook2.PNG);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgb(107, 181, 250);
+    opacity: 0.8;
 }
-.card-divider{
-    opacity: 0.1;
+.sectionHead{
+    text-align: center;
+    padding-top: 2vh;
 }
 .ingredientForm{
     width: 40vw;

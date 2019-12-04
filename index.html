@@ -8,6 +8,7 @@
   <title>Foundation for Sites</title>
   <link rel="stylesheet" href="./public/css/foundation.css">
   <link rel="stylesheet" href="./public/css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,54 +29,53 @@
   <!-- Start of Main Forms -->
 
   <!-- Left Form -->
-  <div class="grid-x grid-padding-x grid-padding-y">
-    <div class="cell small-6 paperSection">
-      <div class="card" style="width: 45vw;">
-        <div class="card-divider">
-          <h4 class="sectionHead">Today's Menu</h4>
+  <div class="cell medium-auto medium-cell-block-container">
+    <div class="grid-x grid-padding-x grid-padding-y-small cell">
+      <div class="cell small-6 small-cell-block-y">
+        <div class="card" style="width: 45vw;">
+            <h4 class="sectionHead">Today's Menu</h4>
+          <div class="card-section">
+            <ul id="todaysMenuSection">
+              <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
+            </ul>
+          </div>
         </div>
-        <div class="card-section">
-          <ul id="todaysMenuSection">
-            <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
-          </ul>
+      </div>
+      <!-- End of left form -->
+  
+      <!-- Start of Right form -->
+      <div class="cell small-6 small-cell-block-y">
+        <div class="card" style="width: 45vw;">
+            <h4 class="sectionHead">Add Item</h4>
+          <!-- menu item form -->
+          <div class="card-section" id="ingredientsList">
+            
+              <label>Menu Item:
+                <input type="text" id="newMenuItem">
+              </label>
+            
+            <!-- add ingredient form -->
+            <div class="cell ingredientForm">
+              <label id="addIngredients">Add Ingredients:
+                <input type="text" name="newIngredient">
+                <input type="text" name="newIngredient">
+                <input type="text" name="newIngredient">
+              </label>
+  
+            </div>
+            <div class="cell" id="ingredientsButtonDiv">
+              <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
+            </div>
+          </div>
+          <a class="button" id="addMenuItemButton">Add Menu Item</a>
+      
         </div>
       </div>
     </div>
-    <!-- End of left form -->
-
-    <!-- Start of Right form -->
-    <div class="cell small-6 paperSection">
-      <div class="card" style="width: 45vw;">
-        <div class="card-divider">
-          <h4 class="sectionHead">Add Item</h4>
-        </div>
-        <!-- menu item form -->
-        <div class="card-section" id="ingredientsList">
-          <div class="cell">
-            <label>Menu Item:
-              <input type="text" id="newMenuItem">
-            </label>
-          </div>
-          <!-- add ingredient form -->
-          <div class="cell ingredientForm">
-            <label id="addIngredients">Add Ingredients:
-              <input type="text" name="newIngredient">
-              <input type="text" name="newIngredient">
-              <input type="text" name="newIngredient">
-            </label>
-
-          </div>
-          <div class="cell" id="ingredientsButtonDiv">
-            <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
-          </div>
-        </div>
-        <button type="button" class="success button" id="addMenuItemButton">Add Menu Item</button>
-      </div>
-    </div>
+    <!-- end of right form -->
+  
+    <!-- End of Main Forms -->
   </div>
-  <!-- end of right form -->
-
-  <!-- End of Main Forms -->
 
   <script src="./public/js/vendor/jquery.js"></script>
   <script src="./public/js/vendor/what-input.js"></script>

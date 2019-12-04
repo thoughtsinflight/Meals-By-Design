@@ -11,7 +11,7 @@ function clearTodaysMenu(){
 // Click Listeners for all days of the week
 $("#mondayButton").on("click", () => {
     clearTodaysMenu()
-    $("<li>").appendTo("ul#todaysMenuSection").prepend("Mondays Menu Placeholder")
+    $("<li>").appendTo("ul#todaysMenuSection").prepend("mondays menu placeholder")
 });
 
 $("#tuesdayButton").on("click", () => {
