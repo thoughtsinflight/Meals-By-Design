@@ -8,7 +8,7 @@ passport.use(new LocalStrategy(
     {usernameField: "email"},
     function(email, password, done) {
     // User tries to sign in, passport will look for a matching user
-        db.user.findOne({ 
+        db.User.findOne({ 
             where: {
                 email: email
             } 
