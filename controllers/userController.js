@@ -2,8 +2,6 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const db = require("../models/index");
 
-const User = db.sequelize.import(path.resolve(__dirname, "../models/User.js"));
-
 // Authentication middleware that works with localStrategy from passport
 // Valid login will go to user dashboard. Invalid will redirect back to login page
 // Password is hashed via user model setup
@@ -18,7 +16,7 @@ router.post("/login",
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
 router.post("/signup", (req, res) => {
-    User.create({
+    db.User.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
