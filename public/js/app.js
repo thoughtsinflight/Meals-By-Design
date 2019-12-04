@@ -44,6 +44,7 @@ $("#sundayButton").on("click", () => {
     $("<li>").appendTo("ul#todaysMenuSection").prepend("Sunday Menu Placeholder")
 })
 
+
 // Click listener for more ingredients button
 $("#moreIngredientsButton").on("click", () => {
     $(`<div class="cell ingredientForm">
@@ -55,12 +56,13 @@ $("#addMenuItemButton").on("click", () => {
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
         return $(elem).val();
     }).get();
-
     const ingredientsObj = ingredients.reduce(function(s, a){
         s.push({name: a});
         return s;
     }, [])
+    
     const newMeal = {
+        dayId: $(":input#weekdaySelect").val(),
         menuItem: $(":input#newMenuItem").val(),
         ingredients: [
             ingredientsObj
@@ -69,10 +71,3 @@ $("#addMenuItemButton").on("click", () => {
     
    console.log(newMeal)
 });
-
-
-
-
-
-// const menuItem = $(":input#newMenuItem").val();
-//     allMenuItems.push(menuItem);
