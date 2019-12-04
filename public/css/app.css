@@ -35,4 +35,24 @@ body{
 #moreIngredientsButton{
     float: right;
 }
+.dropdown-pane {
+    background-image: url(../assets/images/nadine-primeau--bLkT8wGV0I-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+@media screen and (max-width: 39.9375em) {
+    .button.small-only-expanded {
+      display: block;
+      width: 100%;
+      margin-right: 0;
+      margin-left: 0; 
+    } 
+    .dropdown-pane {
+        padding: 0%;
+    }
+    .day {
+        border-radius: 0;
+        margin-bottom: 1vh;
+    }
+}

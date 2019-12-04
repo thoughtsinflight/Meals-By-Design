@@ -12,18 +12,21 @@
 </head>
 
 <body>
-  <!-- Button Header -->
-  <div class="grid-x grid-padding-y">
-    <div class="cell" id="buttonGroup">
-      <a class="button primary" id="mondayButton">Monday</a>
-      <a class="button primary" id="tuesdayButton">Tuesday</a>
-      <a class="button primary" id="wednesdayButton">Wednesday</a>
-      <a class="button primary" id="thursdayButton">Thursday</a>
-      <a class="button primary" id="fridayButton">Friday</a>
-      <a class="button primary" id="saturdayButton">Saturday</a>
-      <a class="button primary" id="sundayButton">Sunday</a>
-    </div>
+  <button class="dropdown button large expanded" data-toggle="menu-dropdown">Week</button>
+  <div class="dropdown-pane grid-container full" data-dropdown data-auto-focus="true" id="menu-dropdown" style="width: 100%;">
+    <!-- <div class="grid-x "> -->
+      <div class="cell" id="buttonGroup" style="margin-left: auto; margin-right: auto;">
+        <a class="button large small-only-expanded primary day" id="mondayButton">Monday</a>
+        <a class="button large small-only-expanded primary day" id="tuesdayButton">Tuesday</a>
+        <a class="button large small-only-expanded primary day" id="wednesdayButton">Wednesday</a>
+        <a class="button large small-only-expanded primary day" id="thursdayButton">Thursday</a>
+        <a class="button large small-only-expanded primary day" id="fridayButton">Friday</a>
+        <a class="button large small-only-expanded primary day" id="saturdayButton">Saturday</a>
+        <a class="button large small-only-expanded primary day" id="sundayButton">Sunday</a>
+      </div>
+    <!-- </div> -->
   </div>
+
   <!-- End Button Header -->
 
   <!-- Start of Main Forms -->
