@@ -26,9 +26,9 @@ app.set("view engine", "handlebars");
 
 // Use sessions to keep track of user login status
 const sess = {
-    secret: 'keyboard cat',
+    secret: 'd0 u Believe 1n M@gic',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {}
 }
 // Use secure cookies in production (because the site is https-enabled) & allow for testing in dev
@@ -43,14 +43,7 @@ app.use(passport.session())
 
 // Routes
 app.use(require("./controllers/staticController"));
-
-app.post('/login', 
-    passport.authenticate('local', {
-        failureRedirect: '/login'
-    }),
-    (req, res) => {
-        res.redirect('/');
-    });
+app.use(require("./controllers/userController"));
 
 //Synchronize my schema
 db.sequelize.sync({ force: process.env.NODE_ENV !== "production" }).then(() => {
