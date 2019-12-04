@@ -14,17 +14,18 @@
 
 <body>
   <button class="dropdown button large expanded" id="navButton" data-toggle="menu-dropdown">Week</button>
-  <div class="dropdown-pane grid-container full" data-dropdown data-auto-focus="true" id="menu-dropdown" style="width: 100%;">
+  <div class="dropdown-pane grid-container full" data-dropdown data-auto-focus="true" id="menu-dropdown"
+    style="width: 100%;">
     <!-- <div class="grid-x "> -->
-      <div class="cell" id="buttonGroup" style="margin-left: auto; margin-right: auto;">
-        <a class="button large small-only-expanded primary day" id="mondayButton">Monday</a>
-        <a class="button large small-only-expanded primary day" id="tuesdayButton">Tuesday</a>
-        <a class="button large small-only-expanded primary day" id="wednesdayButton">Wednesday</a>
-        <a class="button large small-only-expanded primary day" id="thursdayButton">Thursday</a>
-        <a class="button large small-only-expanded primary day" id="fridayButton">Friday</a>
-        <a class="button large small-only-expanded primary day" id="saturdayButton">Saturday</a>
-        <a class="button large small-only-expanded primary day" id="sundayButton">Sunday</a>
-      </div>
+    <div class="cell" id="buttonGroup" style="margin-left: auto; margin-right: auto;">
+      <a class="button large small-only-expanded primary day" id="mondayButton">Monday</a>
+      <a class="button large small-only-expanded primary day" id="tuesdayButton">Tuesday</a>
+      <a class="button large small-only-expanded primary day" id="wednesdayButton">Wednesday</a>
+      <a class="button large small-only-expanded primary day" id="thursdayButton">Thursday</a>
+      <a class="button large small-only-expanded primary day" id="fridayButton">Friday</a>
+      <a class="button large small-only-expanded primary day" id="saturdayButton">Saturday</a>
+      <a class="button large small-only-expanded primary day" id="sundayButton">Sunday</a>
+    </div>
     <!-- </div> -->
   </div>
 
@@ -33,11 +34,12 @@
   <!-- Start of Main Forms -->
 
   <!-- Left Form -->
-  <div class="cell medium-auto medium-cell-block-container" >
+  <div class="cell medium-auto medium-cell-block-container">
     <div class="grid-x grid-padding-x grid-padding-y-small cell">
       <div class="cell small-6 small-cell-block-y">
         <div class="card" style="width: 45vw;" id="menuBox">
-            <h4 class="sectionHead">Today's Menu</h4><hr>
+          <h4 class="sectionHead">Today's Menu</h4>
+          <hr>
           <div class="card-section">
             <ul id="todaysMenuSection">
               <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
@@ -46,48 +48,49 @@
         </div>
       </div>
       <!-- End of left form -->
-  
+
       <!-- Start of Right form -->
       <div class="cell small-6 small-cell-block-y">
-        <div class="card" style="width: 45vw;"  id ="itemBox">
-            <h4 class="sectionHead">Add Item</h4><hr>
+        <div class="card" style="width: 45vw;" id="itemBox">
+          <h4 class="sectionHead">Add Item</h4>
+          <hr>
           <!-- menu item form -->
           <label>Select Weekday:
-              <select id="weekdaySelect">
-                <option value="1">Monday</option>
-                <option value="2">Tuesday</option>
-                <option value="3">Wednesday</option>
-                <option value="4">Thursday</option>
-                <option value="5">Friday</option>
-                <option value="6">Saturday</option>
-                <option value="7">Sunday</option>
-              </select>
-            </label>
+            <select id="weekdaySelect">
+              <option value="1">Monday</option>
+              <option value="2">Tuesday</option>
+              <option value="3">Wednesday</option>
+              <option value="4">Thursday</option>
+              <option value="5">Friday</option>
+              <option value="6">Saturday</option>
+              <option value="7">Sunday</option>
+            </select>
+          </label>
           <div class="card-section" id="ingredientsList">
-            
-              <label>Menu Item:
-                <input type="text" id="newMenuItem">
-              </label>
-            
+
+            <label>Menu Item:
+              <input type="text" id="newMenuItem">
+            </label>
+
             <!-- add ingredient form -->
             <div class="cell ingredientForm">
               <label id="addIngredients">Add Ingredients:
                 <input type="text" name="newIngredient">
                 <input type="text" name="newIngredient">
               </label>
-  
+
             </div>
             <div class="cell" id="ingredientsButtonDiv">
               <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
             </div>
           </div>
           <a class="button" id="addMenuItemButton">Add Menu Item</a>
-      
+
         </div>
       </div>
     </div>
     <!-- end of right form -->
-  
+
     <!-- End of Main Forms -->
   </div>
 
