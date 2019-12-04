@@ -167,11 +167,6 @@ hr:after {
     overflow:hidden;
     box-shadow: 0 0 0 1px #eef, 0 0 5px;
 }
-
-
-
-
-
 @media screen and (max-width: 39.9375em) {
     .button.small-only-expanded {
       display: block;
