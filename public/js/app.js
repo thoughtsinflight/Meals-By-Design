@@ -61,6 +61,7 @@ $("#addMenuItemButton").on("click", () => {
         return s;
     }, [])
     const newMeal = {
+        //this needs to be name. Will make Translation to DB easier
         menuItem: $(":input#newMenuItem").val(),
         ingredients: [
             ingredientsObj
