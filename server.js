@@ -1,6 +1,7 @@
 //Requiring necessary npm packages
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
 const session = require("express-session");
 
 //Requiring dev npm packages
@@ -26,7 +27,9 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(express.static("public"));
+
+//static assets
+app.use(express.static(path.join(__dirname, '/public')))
 
 // View Engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
