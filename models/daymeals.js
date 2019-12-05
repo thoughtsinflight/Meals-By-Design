@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     DayId: DataTypes.INTEGER,
     MealId: DataTypes.INTEGER
   }, {});
-  DayMeals.associate = function(models) {
+  DayMeals.associate = function (models) {
     // associations can be defined here
   };
   return DayMeals;
