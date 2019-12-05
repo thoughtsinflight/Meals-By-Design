@@ -9,21 +9,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           notEmpty: true
         }
       },
       lastName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           notEmpty: true
         }
       },
       email: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -40,7 +40,7 @@ module.exports = {
       },
       // Password must be between 8 and 120 characters in length
       password: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
         validate: {
           len: {

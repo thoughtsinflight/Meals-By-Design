@@ -12,18 +12,14 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-   return queryInterface.bulkInsert('DayMeals', [{
-    dayId: 1, 
-    mealId: 1,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    dayId: 1, 
-    mealId: 2,
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }], {});
+    return queryInterface.bulkInsert('Users', [{
+      firstName: 'Jane',
+      lastName: 'Doe',
+      email: 'jan.doe@email.com',
+      password: 'password123',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -34,6 +30,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-   return queryInterface.bulkDelete('DayMeals', null, {});
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };
