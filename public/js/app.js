@@ -54,6 +54,7 @@ $("#moreIngredientsButton").on("click", () => {
 })
 // click listener for add menu item button
 $("#addMenuItemButton").on("click", (event) => {
+    event.preventDefault();
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
         return $(elem).val();
     }).get();
