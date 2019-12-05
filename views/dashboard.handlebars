@@ -40,37 +40,38 @@
                 <h4 class="sectionHead">Add Item</h4>
                 <hr>
                 <!-- menu item form -->
-                <label>Select Weekday:
-                    <select id="weekdaySelect">
-                        <option value="1">Monday</option>
-                        <option value="2">Tuesday</option>
-                        <option value="3">Wednesday</option>
-                        <option value="4">Thursday</option>
-                        <option value="5">Friday</option>
-                        <option value="6">Saturday</option>
-                        <option value="7">Sunday</option>
-                    </select>
-                </label>
-                <div class="card-section" id="ingredientsList">
-
-                    <label>Menu Item:
-                        <input type="text" id="newMenuItem">
+                <form id="addMenuItemForm" method="POST" action="/api/meals">
+                    <label>Select Weekday:
+                        <select id="weekdaySelect">
+                            <option value="1">Monday</option>
+                            <option value="2">Tuesday</option>
+                            <option value="3">Wednesday</option>
+                            <option value="4">Thursday</option>
+                            <option value="5">Friday</option>
+                            <option value="6">Saturday</option>
+                            <option value="7">Sunday</option>
+                        </select>
                     </label>
+                    <div class="card-section" id="ingredientsList">
 
-                    <!-- add ingredient form -->
-                    <div class="cell ingredientForm">
-                        <label id="addIngredients">Add Ingredients:
-                            <input type="text" name="newIngredient">
-                            <input type="text" name="newIngredient">
+                        <label>Menu Item:
+                            <input type="text" id="newMenuItem">
                         </label>
 
-                    </div>
-                    <div class="cell" id="ingredientsButtonDiv">
-                        <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
-                    </div>
-                </div>
-                <a class="button" id="addMenuItemButton">Add Menu Item</a>
+                        <!-- add ingredient form -->
+                        <div class="cell ingredientForm">
+                            <label id="addIngredients">Add Ingredients:
+                                <input type="text" name="newIngredient">
+                                <input type="text" name="newIngredient">
+                            </label>
 
+                        </div>
+                        <div class="cell" id="ingredientsButtonDiv">
+                            <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
+                        </div>
+                    </div>
+                    <button class="button" id="addMenuItemButton">Add Menu Item</button>
+                </form>
             </div>
         </div>
     </div>

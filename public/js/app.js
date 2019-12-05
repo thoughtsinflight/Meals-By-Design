@@ -1,6 +1,5 @@
 $(document).foundation()
-const allMenuItems = [];
-const allIngredients = [];
+
 
 const curDay = moment().weekday(-7);
 $("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
@@ -56,7 +55,7 @@ $("#moreIngredientsButton").on("click", () => {
 $("#addMenuItemButton").on("submit", (event) => {
     event.preventDefault();
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
-        return $(elem).val();
+        return $(elem).val().trim();
     }).get();
     const ingredientsObj = ingredients.reduce(function(s, a){
         s.push({name: a});
@@ -65,31 +64,14 @@ $("#addMenuItemButton").on("submit", (event) => {
     
     const newMeal = {
         dayId: $(":input#weekdaySelect").val(),
-        name: $(":input#newMenuItem").val(),
+        name: $(":input#newMenuItem").val().trim(),
         ingredients: [
             ingredientsObj
         ]
       }
    console.log(newMeal)
 
-   //Post request.
-   $.ajax("/api/meals", {
-       type: "POST",
-       data: newMeal
-   }).then(
-    function() {
-        location.reload();
-    }
-   )
+  
 });
 
-$("#GenerateGroceryList").on("click", (event) => {
-    //get request
-    $.ajax("/api/ingredients", {
-        type: "GET"
-    }).then(
-        function () {
-            location.reload()
-        }
-    )
-});
+
