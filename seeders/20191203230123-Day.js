@@ -13,10 +13,6 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Days', [{
-      day: 'Sunday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
       day: 'Monday',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -38,6 +34,10 @@ module.exports = {
       updatedAt: new Date()
     },{
       day: 'Saturday',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      day: 'Sunday',
       createdAt: new Date(),
       updatedAt: new Date()
     },], {});
