@@ -29,47 +29,17 @@
                     <ul id="todaysMenuSection">
 
                         {{#each meals}}
-                            <p><strong>Recipe: {{name}}</strong></p>
-                            <ul>
+                        <p class="recipeName"><strong>Recipe: {{name}}</strong></p>
+                        <ul>
                             {{#each Ingredients}}
-                                <li>
-                                    {{name}}
-                                </li>
+                            <li>
+                                {{name}}
+                            </li>
                             {{/each}}
-                            </ul>
+                        </ul>
                         {{/each}}
 
-                        {{!-- {{#switch res.data.id}}
-                        {{#case curDay}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 2}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 3}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 4}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 5}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 6}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#case 7}}
-                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id.name}}</button>
-                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id.ingredients}}<li>{{this}}{{/each}}</div>`
-                        {{/case}}
-                        {{#default}}`Select a Day!`{{/default}}
-                        {{/switch}} <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE --> --}}
+
                     </ul>
                 </div>
                 <a class="button" id="generateGroceryList" href="/groceryList">Generate Grocery List</a>
@@ -111,9 +81,9 @@
                         </div>
                         <div class="cell" id="ingredientsButtonDiv">
                             <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
+                            <button class="button" id="addMenuItemButton">Add Menu Item</button>
                         </div>
                     </div>
-                    <button class="button" id="addMenuItemButton">Add Menu Item</button>
                 </form>
             </div>
         </div>
@@ -122,5 +92,3 @@
 
     <!-- End of Main Forms -->
 </div>
-
-<script src="/js/app.js"></script>
