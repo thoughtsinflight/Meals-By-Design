@@ -53,7 +53,7 @@ $("#moreIngredientsButton").on("click", () => {
   </div>`).prependTo("div#ingredientsButtonDiv")
 })
 // click listener for add menu item button
-$("#addMenuItemButton").on("click", () => {
+$("#addMenuItemButton").on("click", (event) => {
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
         return $(elem).val();
     }).get();
@@ -69,6 +69,25 @@ $("#addMenuItemButton").on("click", () => {
             ingredientsObj
         ]
       }
-    
    console.log(newMeal)
+
+   //Post request.
+   $.ajax("/api/ ", {
+       type: "POST",
+       data: newMeal
+   }).then(
+    function() {
+        location.reload();
+    }
+   )
+});
+$("#GenerateGroceryList").on("click", (event) => {
+
+    $.ajax("/api/ ", {
+        type: "GET"
+    }).then(
+        function () {
+            location.reload()
+        }
+    )
 });
