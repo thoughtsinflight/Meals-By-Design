@@ -72,7 +72,7 @@ $("#addMenuItemButton").on("click", (event) => {
    console.log(newMeal)
 
    //Post request.
-   $.ajax("/api/ ", {
+   $.ajax("/api/meals", {
        type: "POST",
        data: newMeal
    }).then(
@@ -81,9 +81,10 @@ $("#addMenuItemButton").on("click", (event) => {
     }
    )
 });
-$("#GenerateGroceryList").on("click", (event) => {
 
-    $.ajax("/api/ ", {
+$("#GenerateGroceryList").on("click", (event) => {
+    //get request
+    $.ajax("/api/ingredients", {
         type: "GET"
     }).then(
         function () {
