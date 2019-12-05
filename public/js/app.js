@@ -85,7 +85,9 @@ $("#GenerateGroceryList").on("click", (event) => {
 
     $.ajax("/api/ ", {
         type: "GET"
-    }).then(){
-        location.reload();
-    }
-})
+    }).then(
+        function () {
+            location.reload()
+        }
+    )
+});
