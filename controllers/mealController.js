@@ -34,42 +34,5 @@ router.get("/:id/ingredients", async (req, res) => {
     res.json({ meal });
 });
 
-//post - create
-//FINISH
-router.post("/", async (req, res) => {
-    //req.body.ingredients should be an array of objects of the format:
-    // [{name: "flour"}, {name: "butter"}]
-    //need to get user id from session here.
-    const userId = 1;
-    const { name: mealName, ingredients, dayId } = req.body;
-    //Find Day
-    const day = await Day.findByPk(dayId);
-    //Find User
-    const user = await User.findByPk(userId);
-    //Find or Create meal
-    const [meal] = await Meal.findOrCreate({
-        where: { name: mealName }
-    });
-
-    await meal.setDay(day);
-    await meal.setUser(user);
-
-    ingredients.forEach(async (ingredient) => {
-        const [focIngredient] = await Ingredient.findOrCreate({ where: ingredient });
-        await meal.addIngredient(focIngredient);
-    });
-
-    const currentIngredients = await meal.getIngredients();
-    res.send({ day, meal, currentIngredients });
-});
-
-//delete
-router.delete("/:id", (req, res) => {
-    Meal.findbyPK(req.params.id)
-        .then(meal => (meal.destroy()))
-        .then(() => (res.send("Meal destroyed!")));
-});
-
-
 
 module.exports = router;
