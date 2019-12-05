@@ -13,22 +13,4 @@ router.get("/:id", (req, res) => {
     Ingredient.findbyPK(req.params.id).then(ingredient => (res.send(ingredient)));
 });
 
-//post - create
-router.post("/", (req, res) => {
-    Ingredient.findOrCreate({ name: req.body.name }).then(ingredient => {
-        console.log(ingredient);
-        res.send(ingredient)
-    });
-});
-
-
-//delete
-router.delete("/:id", (req, res) => {
-    Ingredient.findbyPK(req.params.id)
-    .then(ingredient => (ingredient.destroy()))
-    .then(() => (res.send("Ingredient destroyed!")));
-});
-
-
-
 module.exports = router;
