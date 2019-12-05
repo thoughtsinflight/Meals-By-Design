@@ -3,7 +3,9 @@ const db = require("../models/index");
 const path = require("path");
 
 const Day = db.sequelize.import(path.resolve(__dirname, "../models/day.js"));
-
+const User = db.sequelize.import(path.resolve(__dirname, "../models/user.js"));
+const Meal = db.sequelize.import(path.resolve(__dirname, "../models/meal.js"));
+const Ingredient = db.sequelize.import(path.resolve(__dirname, "../models/ingredient.js"));
 //get - read
 
 //get all days sans meals
@@ -17,59 +19,40 @@ router.get("/meals", (req, res) => {
 });
 
 //get day individually by id
-router.get("/:id", (req, res) => {
-    Day.findByPk(req.params.id).then(day => (res.send(day)));
+router.get("/:id", async (req, res) => {
+    const day = await Day.findByPk(req.params.id);
+    res.send(day);
 });
 
 //get day by id and its associated meals
-router.get("/:id/meals", (req, res) => {
-    Day.findByPk(req.params.id)
-        .then((day) => {
-            day.getMeals()
-                .then((meals) => {
-                    const formattedDay = {}
-                    formattedDay.id = day.id;
-                    formattedDay.day = day.day;
-                    formattedDay.meals = [];
-                    for (let i = 0; i < meals.length; i++) {
-                        formattedDay.meals.push({ id: meals[i].id, name: meals[i].name });
-                    }
-                    console.log(formattedDay);
-
-                    res.send(formattedDay);
-                })
-        });
-});
-
-//post - create
-router.post("/", (req, res) => {
-    //req.body.meals should be an array of objects of the format:
-    // [{name: "flour"}, {name: "butter"}]
-    Day.findOrCreate({
-        name: req.body.name,
-        meals: req.body.meals
-    }, {
-        include: [{
-            association: Day.Meals,
-            include: [Day.Meals.Ingredients]
-            
-          }]
-    }).then(day => {
-        console.log(day);
-        res.send(day)
+router.get("/:id/meals", async (req, res) => {
+    //need to get user id from session here.
+    const userId = 1;
+    const meals = await Meal.findAll({
+        include: [
+            {
+                model: Ingredient,
+                as: "Ingredients"
+            },
+            {
+                model: Day,
+                as: "Day",
+                where: {
+                    id: req.params.id
+                },
+            },
+            {
+                model: User,
+                as: "User",
+                where:{
+                    id:userId
+                }
+            }
+        ]
     });
+
+    res.json({ meals });
 });
-
-//put - update
-
-
-//delete
-router.delete("/:id", (req, res) => {
-    Day.findbyPK(req.params.id)
-        .then(day => (day.destroy()))
-        .then(() => (res.send("Day destroyed!")));
-});
-
 
 
 module.exports = router;

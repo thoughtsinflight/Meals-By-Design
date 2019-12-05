@@ -12,15 +12,13 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('UserDayMeals', [{
-      userId: 1,
+    return queryInterface.bulkInsert('DayMeals', [{
       dayId: 1,
       mealId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      userId: 1,
       dayId: 1,
       mealId: 2,
       createdAt: new Date(),
