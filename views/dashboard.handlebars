@@ -27,9 +27,40 @@
                 <hr>
                 <div class="card-section">
                     <ul id="todaysMenuSection">
-                        <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
+                        {{#switch res.data.id}}
+                        {{#case curDay}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[1].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[1].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 2}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[2].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[2].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 3}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[3].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[3].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 4}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[4].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[4].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 5}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[5].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[5].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 6}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[6].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[6].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#case 7}}
+                        `<button class="button" type="button" data-toggle="example-dropdown">{{res.data.id[7].name}}</button>
+                        <div class="dropdown-pane" id="example-dropdown" data-dropdown>{{#each res.data.id[7].ingredients}}<li>{{this}}{{/each}}</div>`
+                        {{/case}}
+                        {{#default}}`Select a Day!`{{/default}}
+                        {{/switch}} <!-- USER ENTERED MENU ITEMS DISPLAY DYNAMICALLY HERE -->
                     </ul>
                 </div>
+                <a class="button" id="generateGroceryList" href="/groceryList">Generate Grocery List</a>
             </div>
         </div>
         <!-- End of left form -->
@@ -40,44 +71,44 @@
                 <h4 class="sectionHead">Add Item</h4>
                 <hr>
                 <!-- menu item form -->
-                <label>Select Weekday:
-                    <select id="weekdaySelect">
-                        <option value="1">Monday</option>
-                        <option value="2">Tuesday</option>
-                        <option value="3">Wednesday</option>
-                        <option value="4">Thursday</option>
-                        <option value="5">Friday</option>
-                        <option value="6">Saturday</option>
-                        <option value="7">Sunday</option>
-                    </select>
-                </label>
-                <div class="card-section" id="ingredientsList">
-
-                    <label>Menu Item:
-                        <input type="text" id="newMenuItem">
+                <form id="addMenuItemForm" method="POST" action="/api/meals">
+                    <label>Select Weekday:
+                        <select id="weekdaySelect">
+                            <option value="1">Monday</option>
+                            <option value="2">Tuesday</option>
+                            <option value="3">Wednesday</option>
+                            <option value="4">Thursday</option>
+                            <option value="5">Friday</option>
+                            <option value="6">Saturday</option>
+                            <option value="7">Sunday</option>
+                        </select>
                     </label>
+                    <div class="card-section" id="ingredientsList">
 
-                    <!-- add ingredient form -->
-                    <div class="cell ingredientForm">
-                        <label id="addIngredients">Add Ingredients:
-                            <input type="text" name="newIngredient">
-                            <input type="text" name="newIngredient">
+                        <label>Menu Item:
+                            <input type="text" id="newMenuItem">
                         </label>
 
-                    </div>
-                    <div class="cell" id="ingredientsButtonDiv">
-                        <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
-                    </div>
-                </div>
-                <a class="button" id="addMenuItemButton">Add Menu Item</a>
+                        <!-- add ingredient form -->
+                        <div class="cell ingredientForm">
+                            <label id="addIngredients">Add Ingredients:
+                                <input type="text" name="newIngredient">
+                                <input type="text" name="newIngredient">
+                            </label>
 
+                        </div>
+                        <div class="cell" id="ingredientsButtonDiv">
+                            <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
+                        </div>
+                    </div>
+                    <button class="button" id="addMenuItemButton">Add Menu Item</button>
+                </form>
             </div>
         </div>
     </div>
     <!-- end of right form -->
 
     <!-- End of Main Forms -->
-    <a class="button" id="generateGroceryList" href="/groceryList">Generate Grocery List</a>
 </div>
 
 <script src="./public/js/app.js"></script>
