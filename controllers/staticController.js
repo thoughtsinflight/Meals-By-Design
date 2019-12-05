@@ -10,7 +10,17 @@ router.get("/signUp", (req,res) => {
     res.render("signUp")
 })
 router.get("/dashboard", (req,res) => {
-    res.render("dashboard")
+
+    res.render("dashboard",{
+        id: 5,
+        name: "cake",
+        ingredients: [
+            {name: "butter"},
+            {name: "eggs"},
+            {name: "floor"},
+            {name: "sugar"}
+        ]
+    });
 })
 
 module.exports = router;
