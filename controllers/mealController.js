@@ -8,7 +8,6 @@ const Day = db.sequelize.import(path.resolve(__dirname, "../models/day.js"));
 const User = db.sequelize.import(path.resolve(__dirname, "../models/user.js"));
 
 
-
 //create
 router.post("/", async (req, res) => {
     //req.body.ingredients should be an array of objects of the format:
