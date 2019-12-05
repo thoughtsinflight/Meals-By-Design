@@ -34,6 +34,24 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+<<<<<<< HEAD
+=======
+// Use sessions to keep track of user login status
+const sess = {
+    secret: 'd0 u Believe 1n M@gic',
+    resave: true,
+    saveUninitialized: false,
+    cookie: {}
+}
+// Use secure cookies in production (because the site is https-enabled) & allow for testing in dev
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1)
+    sess.cookie.secure = true
+}
+
+app.use(session(sess));
+
+>>>>>>> d1b2f2467185061f637695d2fa1c886828ec1dab
 app.use(passport.initialize());
 app.use(passport.session())
 
