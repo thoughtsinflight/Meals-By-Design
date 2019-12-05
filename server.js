@@ -58,7 +58,6 @@ app.use("/api/ingredients", ingredientRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/days", dayRouter);
 app.use("/api", userRouter);
-
 //Synchronize my schema
 //This will blow out the seed data, so removing for api testing.
 //{ force: process.env.NODE_ENV !== "production" }
