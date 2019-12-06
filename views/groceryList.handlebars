@@ -1,16 +1,19 @@
-
-    <div class="grid-container" id="logInField">
-        <div class="card">
-            <h3>Your Grocery List</h3>
-            <div class="card-section">
-                {{!-- GROCERY LIST GENERATED HERE --}}
-            </div>
+<div class="grid-container">
+    <div class="card">
+        <h3>Your Grocery List</h3>
+        <div class="card-section">
+            {{!-- GROCERY LIST GENERATED HERE --}}
+            <ul>
+                {{#each meals}}
+                <li>{{{name this}}}
+                    <ul>
+                        {{#each Ingredients}}
+                        <li>{{{name this}}}</li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{/each}}
+            </ul>
         </div>
     </div>
-
-
-
-    <script src="./public/js/vendor/jquery.js"></script>
-    <script src="./public/js/vendor/what-input.js"></script>
-    <script src="./public/js/vendor/foundation.js"></script>
-    <script src="./public/js/logIn.js"></script>
+</div>

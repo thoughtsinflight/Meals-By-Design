@@ -3,13 +3,20 @@
     style="width: 100%;">
     <!-- <div class="grid-x "> -->
     <div class="cell" id="buttonGroup" style="margin-left: auto; margin-right: auto;">
-        <a class="button large small-only-expanded primary day" id="mondayButton">Monday</a>
-        <a class="button large small-only-expanded primary day" id="tuesdayButton">Tuesday</a>
-        <a class="button large small-only-expanded primary day" id="wednesdayButton">Wednesday</a>
-        <a class="button large small-only-expanded primary day" id="thursdayButton">Thursday</a>
-        <a class="button large small-only-expanded primary day" id="fridayButton">Friday</a>
-        <a class="button large small-only-expanded primary day" id="saturdayButton">Saturday</a>
-        <a class="button large small-only-expanded primary day" id="sundayButton">Sunday</a>
+        <button type="button" class="button large small-only-expanded primary day" id="mondayButton"
+            value="1">Monday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="tuesdayButton"
+            value="2">Tuesday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="wednesdayButton"
+            value="3">Wednesday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="thursdayButton"
+            value="4">Thursday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="fridayButton"
+            value="5">Friday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="saturdayButton"
+            value="6">Saturday</button>
+        <button type="button" class="button large small-only-expanded primary day" id="sundayButton"
+            value="7">Sunday</button>
     </div>
     <!-- </div> -->
 </div>
@@ -27,22 +34,22 @@
                 <hr>
                 <div class="card-section">
                     <ul id="todaysMenuSection">
-
                         {{#each meals}}
-                        <p class="recipeName"><strong>Recipe: {{name}}</strong></p>
-                        <ul>
-                            {{#each Ingredients}}
-                            <li>
-                                {{name}}
-                            </li>
-                            {{/each}}
-                        </ul>
+                        <li>
+                            <p class="recipeName"><strong>Recipe: {{name this}}</strong></p>
+                            <ul>
+                                {{#each Ingredients}}
+                                <li>
+                                    {{name this}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </li>
                         {{/each}}
-
 
                     </ul>
                 </div>
-                <a class="button" id="generateGroceryList" href="/groceryList">Generate Grocery List</a>
+                <a class="button" href="/groceryList">Generate Grocery List</a>
             </div>
         </div>
         <!-- End of left form -->
@@ -81,7 +88,7 @@
                         </div>
                         <div class="cell" id="ingredientsButtonDiv">
                             <a class="button tiny" id="moreIngredientsButton">More Ingredients</a>
-                            <button class="button" id="addMenuItemButton">Add Menu Item</button>
+                            <button type="button" class="button" id="addMenuItemButton">Add Menu Item</button>
                         </div>
                     </div>
                 </form>
