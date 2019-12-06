@@ -11,12 +11,9 @@ passport.use(new LocalStrategy(
         db.User.findOne({ 
             where: {
                 email: email
-            },
-        function(err, dbUser) {
-            if(err) {
-                return done(err);
             }
-            // If the email is incorrect
+        }).then(dbUser => {
+          // If the email is incorrect
             if(!dbUser){
                 return done(null, false, {
                     message: "There's no user with that email."
@@ -29,9 +26,10 @@ passport.use(new LocalStrategy(
                 });
             //If everything is right, return the user data
             }
-                return done(null, dbUser)
-            
-        }})
+                done(null, dbUser);
+        }).catch(err => {
+            done(err);
+        })
     }
 ));
 
@@ -42,12 +40,12 @@ passport.serializeUser( (user, done) => {
 });
 
 passport.deserializeUser( (id, done) => {
-    db.user.findByPk(id).then( (err, user) => {
-        if (err) {
-            return done(err)
-        }else{
-            done(null, user)
-        }
+    db.User.findByPk(id)
+    .then( user => {
+        done(null, user)
+    })
+    .catch(err => {
+        return done(err)
     });
 });
 

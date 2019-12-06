@@ -1,10 +1,9 @@
-  {{!-- <link rel="stylesheet" href="/css/login.css"> --}}
-<div><a href="/index">Home</a></div>
+<div><a href="/">Home</a></div>
 <div class="grid-container" id="logInField">
     <div class="card">
         <h3 class="text-center">Login</h3><hr>
         <div class="card-section">
-            <form id="logInBars" id="loginForm" method="POST" action="/api/login">
+            <form id="loginForm" action="/login" method="POST">
                 <div class="medium-6 cell">
                     <label>Email:
                         <input type="email" name="email" id="existingEmail" placeholder="Email">
@@ -25,5 +24,4 @@
     </div>
 </div>
 
-<script src="/js/app.js"></script>
-<script src="/js/logIn-signUp.js"></script>
+{{!-- <script src="/js/login_signup.js"></script> --}}
