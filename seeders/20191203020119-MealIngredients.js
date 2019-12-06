@@ -13,56 +13,56 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('MealIngredients', [{
-      mealId: 1,
-      ingredientId: 1,
+      MealId: 1,
+      IngredientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 1,
-      ingredientId: 2,
+      MealId: 1,
+      IngredientId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 1,
-      ingredientId: 3,
+      MealId: 1,
+      IngredientId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 1,
-      ingredientId: 4,
+      MealId: 1,
+      IngredientId: 4,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 2,
-      ingredientId: 1,
+      MealId: 2,
+      IngredientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 2,
-      ingredientId: 2,
+      MealId: 2,
+      IngredientId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 2,
-      ingredientId: 3,
+      MealId: 2,
+      IngredientId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 2,
-      ingredientId: 4,
+      MealId: 2,
+      IngredientId: 4,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      mealId: 2,
-      ingredientId: 5,
+      MealId: 2,
+      IngredientId: 5,
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

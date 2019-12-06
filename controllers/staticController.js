@@ -28,7 +28,7 @@ router.post("/login",
 );
 
 router.get("/signup", (req, res) => {
-    res.render("signup")
+    res.render("signUp")
 })
 
 function uniqueEmail(email) {

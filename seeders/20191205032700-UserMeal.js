@@ -13,14 +13,14 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('UserMeals', [{
-      userId: 1,
-      mealId: 1,
+      UserId: 1,
+      MealId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      userId: 1,
-      mealId: 2,
+      UserId: 1,
+      MealId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
