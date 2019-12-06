@@ -6,11 +6,9 @@ const db = require("../models/index");
 // Valid login will go to user dashboard. Invalid will redirect back to login page
 // Password is hashed via user model setup
 router.post("/login", 
-    passport.authenticate("local", {
-        successRedirect: "/dashboard",
-        failureRedirect: "/login"
-    },
-    (req, res) => {res.json(req.user);
+    passport.authenticate("local", 
+    (req, res) => {
+        res.redirect("/dashboard");
     })
 );
 

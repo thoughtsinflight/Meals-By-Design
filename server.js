@@ -47,6 +47,7 @@ if (app.get('env') === 'production') {
     app.set('trust proxy', 1)
     sess.cookie.secure = true
 }
+
 app.use(session(sess));
 
 app.use(passport.initialize());
@@ -57,7 +58,21 @@ app.use(staticRouter);
 app.use("/api/ingredients", ingredientRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/days", dayRouter);
-app.use("/api/", userRouter);
+app.use("/api", userRouter);
+
+
+// helper for "if a = b" logic in handlebars
+// var hbs = exphbs.create({
+//     // Specify helpers which are only registered on this instance.
+//     helpers: {
+//         'if_eq': function(a, b, opts) {
+//             if (a == b) {
+//                 return opts.fn(this);
+//             } else {
+//                 return opts.inverse(this);
+//             }
+//     }
+// });
 
 //Synchronize my schema
 //This will blow out the seed data, so removing for api testing.

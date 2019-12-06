@@ -12,35 +12,18 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Days', [{
-      day: 'Monday',
+    return queryInterface.bulkInsert('UserMeals', [{
+      userId: 1,
+      mealId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      day: 'Tuesday',
+    },
+    {
+      userId: 1,
+      mealId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
-    },{
-      day: 'Wednesday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      day: 'Thursday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      day: 'Friday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      day: 'Saturday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },{
-      day: 'Sunday',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },], {});
+    }], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -51,6 +34,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Days', null, {});
+    return queryInterface.bulkDelete('UserMeals', null, {});
   }
 };

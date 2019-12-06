@@ -1,31 +1,29 @@
+  {{!-- <link rel="stylesheet" href="/css/login.css"> --}}
+<div><a href="/index">Home</a></div>
 <div class="grid-container" id="logInField">
-        <div class="card">
-                <h3>Login</h3>
-            <div class="card-section">
-                <form id="logInBars">
-                    <div class="medium-6 cell">
-                        <label id="existingEmail">Email:
-                            <input type="text" placeholder="Email">
-                        </label>
-                    </div>
-                    <div class="medium-6 cell">
-                        <label id="existingPassword">Password:
-                            <input type="password" placeholder="Password">
-                        </label>
-                    </div>
-                </form>
+    <div class="card">
+        <h3 class="text-center">Login</h3><hr>
+        <div class="card-section">
+            <form id="logInBars" id="loginForm" method="POST" action="/api/login">
+                <div class="medium-6 cell">
+                    <label>Email:
+                        <input type="email" name="email" id="existingEmail" placeholder="Email">
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Password:
+                        <input type="password" name="password" id="existingPassword" placeholder="Password">
+                    </label>
+                </div>
                 <div class="grid-x">
                     <div class="cell">
-                        <a class="button primary" id="loginButton" href="/dashboard">Login!</a>
+                        <button class="button primary" id="loginButton">Login!</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 
-
-
-    {{!-- <script src="./public/js/vendor/jquery.js"></script>
-    <script src="./public/js/vendor/what-input.js"></script>
-    <script src="./public/js/vendor/foundation.js"></script> --}}
-    {{!-- <script src="./public/js/logIn.js"></script> --}}
+<script src="/js/app.js"></script>
+<script src="/js/logIn-signUp.js"></script>

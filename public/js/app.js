@@ -1,3 +1,4 @@
+$(document).ready( function() {
 $(document).foundation()
 const allMenuItems = [];
 const allIngredients = [];
@@ -8,6 +9,7 @@ $("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 function clearTodaysMenu(){
     $("ul#todaysMenuSection li").remove();
 }
+
 
 // Click Listeners for all days of the week
 $("#mondayButton").on("click", () => {
@@ -51,9 +53,9 @@ $("#moreIngredientsButton").on("click", () => {
     $(`<div class="cell ingredientForm">
     <input type="text" name="newIngredient">
   </div>`).prependTo("div#ingredientsButtonDiv")
-})
+});
 // click listener for add menu item button
-$("#addMenuItemButton").on("click", () => {
+$("#addMenuItemButton").on("click", (event) => {
     const ingredients = $("input[name^=newIngredient]").map(function(idx, elem){
         return $(elem).val();
     }).get();
@@ -69,6 +71,27 @@ $("#addMenuItemButton").on("click", () => {
             ingredientsObj
         ]
       }
-    
    console.log(newMeal)
+
+   //Post request.
+   $.ajax("/api/ ", {
+       type: "POST",
+       data: newMeal
+   }).then(
+    function() {
+        location.reload();
+    }
+   )
+});
+
+$("#GenerateGroceryList").on("click", (event) => {
+
+    $.ajax("/api/ ", {
+        type: "GET"
+    }).then(
+        function () {
+            location.reload()
+        }
+    )
+});
 });

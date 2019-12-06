@@ -12,7 +12,7 @@ body{
 .card{
   height: 50vh;
   width: 50vw;
-  margin: 5vh 20vw;
+  /* margin: 5vh 20vw; */
   align-content: center;
   text-align: center;
   background-color: rgb(107, 181, 250);

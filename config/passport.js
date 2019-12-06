@@ -11,38 +11,42 @@ passport.use(new LocalStrategy(
         db.User.findOne({ 
             where: {
                 email: email
-            } 
-        }).then( dbUser => {
+            },
+        function(err, dbUser) {
+            if(err) {
+                return done(err);
+            }
             // If the email is incorrect
             if(!dbUser){
                 return done(null, false, {
                     message: "There's no user with that email."
                 });
+            }
             // If the email is right but the password is wrong
-            }else if(!dbUser.goodPass(password)) {
+            if(!dbUser.validPassword(password)) {
                 return done(null, false, {
                     message: "That password is invalid."
                 });
             //If everything is right, return the user data
-            }else {
-                return done(null, dbUser)
             }
-        });
+                return done(null, dbUser)
+            
+        }})
     }
 ));
 
 // Restore/remember authentication state across the HTTP requests during the user's session
 // Serializing/deserializing the user data needs to happen
-passport.serializeUser( (user, cb) => {
-    cb(null, user.id);
+passport.serializeUser( (user, done) => {
+    done(null, user.id);
 });
 
-passport.deserializeUser( (id, cb) => {
+passport.deserializeUser( (id, done) => {
     db.user.findByPk(id).then( (err, user) => {
         if (err) {
-            return cb(err)
+            return done(err)
         }else{
-            cb(null, user)
+            done(null, user)
         }
     });
 });

@@ -50,17 +50,18 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   //Checking capability of comparing unhashed password to hashed password in the db
-  User.prototype.goodPass = (password) => {
-    return bcrypt.compareSync(password, this.password);
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, User.password);
   };
 
   // Hook to hash the password before creating a user
   User.addHook("beforeCreate", (user) => {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(13));
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(13), null);
   });
 
   User.associate = function(models) {
     // associations can be defined here
+    User.belongsToMany(models.Meal, { through: 'UserMeals', as: 'Meals' });
   };
 
   return User;
