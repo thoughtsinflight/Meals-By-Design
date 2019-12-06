@@ -10,7 +10,7 @@ const Ingredient = db.sequelize.import(path.resolve(__dirname, "../models/ingred
 //get day by id and its associated meals
 router.get("/:id/meals", async (req, res) => {
     //need to get user id from session here.
-    const userId = 1;
+    const userId = req.user.id;
     const meals = await Meal.findAll({
         include: [
             {
@@ -27,13 +27,14 @@ router.get("/:id/meals", async (req, res) => {
             {
                 model: User,
                 as: "User",
-                where:{
-                    id:userId
+                where: {
+                    id: userId
                 }
             }
-        ]
+        ],
+        nest: true
     });
-
+    console.log(meals);
     res.json({ meals });
 });
 

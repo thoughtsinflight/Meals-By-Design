@@ -1,3 +1,4 @@
+
 'use strict';
 //Need bcryptjs npm for password protection
 var bcrypt = require("bcryptjs");
@@ -51,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
 
   //Checking capability of comparing unhashed password to hashed password in the db
   User.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, User.password);
+    return bcrypt.compareSync(password, this.password);
   };
 
   // Hook to hash the password before creating a user
