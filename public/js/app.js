@@ -74,7 +74,7 @@ $("#addMenuItemButton").on("click", (event) => {
    console.log(newMeal)
 
    //Post request.
-   $.ajax("/api/ ", {
+   $.ajax("/api/ingredients", {
        type: "POST",
        data: newMeal
    }).then(

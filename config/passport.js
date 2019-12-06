@@ -40,12 +40,12 @@ passport.serializeUser( (user, done) => {
 });
 
 passport.deserializeUser( (id, done) => {
-    db.User.findByPk(id).then( (err, user) => {
-        if (err) {
-            return done(err)
-        }else{
-            done(null, user)
-        }
+    db.User.findByPk(id)
+    .then( user => {
+        done(null, user)
+    })
+    .catch(err => {
+        return done(err)
     });
 });
 
