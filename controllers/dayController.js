@@ -27,14 +27,14 @@ router.get("/:id/meals", async (req, res) => {
             {
                 model: User,
                 as: "User",
-                where:{
+                where: {
                     id: userId
                 }
             }
         ],
         nest: true
     });
-
+    console.log(meals);
     res.json({ meals });
 });
 

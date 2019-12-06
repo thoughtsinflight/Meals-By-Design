@@ -63,7 +63,7 @@ router.get("/dashboard",
     },
     (req, res) => {
         const dayId = moment().day() === 0 ? 7 : moment().day();
-        //const dayId = 1;
+        //const dayId = 4;
         const userId = req.user.id;
         Meal.findAll({
             include: [
@@ -109,7 +109,8 @@ router.get("/groceryList", (req, res) => {
     // inside the function =>  res.render("dashboard", meals)
 
     //need to get user id from session here.
-    const userId = 1;
+    //const userId = 1;
+    const userId = req.user.id;
     Ingredient.findAll({
         include: [
             {
@@ -125,8 +126,7 @@ router.get("/groceryList", (req, res) => {
                     }
                 ]
             }
-        ],
-        nest: true
+        ]
     }).then((ingredients) => {
         const parsed = JSON.parse(JSON.stringify(ingredients));
         res.render("groceryList", {
@@ -141,12 +141,6 @@ router.get("/groceryList", (req, res) => {
         });
     });
     // once the sequelize call is done, replace this dummyData variable below with the data object from the database
-})
-
-
-// MUST BE LAST. Safety net catch-all route for the clowns who try entering bad routes.
-router.get("*", (req, res) => {
-    res.render("index")
 });
 
 module.exports = router;

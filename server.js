@@ -60,6 +60,10 @@ app.use("/api/meals", mealRouter);
 app.use("/api/days", dayRouter);
 app.use("/api/users", userRouter);
 
+// MUST BE LAST. Safety net catch-all route for the clowns who try entering bad routes.
+app.use("*", (req, res) => {
+    res.render("index")
+});
 
 // helper for "if a = b" logic in handlebars
 // var hbs = exphbs.create({
