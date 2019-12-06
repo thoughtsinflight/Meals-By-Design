@@ -1,210 +1,76 @@
 const router = require("express").Router();
+const passport = require("../config/passport");
+const db = require("../models");
 
 router.get("/", (req, res) => {
     res.render("index")
 })
+
 router.get("/login", (req, res) => {
     res.render("login")
 })
-router.get("/signUp", (req, res) => {
-    res.render("signUp")
-})
-router.get("/dashboard", (req, res) => {
-    // sequelize call to the db to get all meals
-    // after receiving the meals from the db and assigning them to a variable * meals *
-    // inside the function =>  res.render("dashboard", meals)
-    var dummyData = {
-        "meals": [
-            {
-                "id": 1,
-                "name": "Cake",
-                "createdAt": "2019-12-05T16:24:20.000Z",
-                "updatedAt": "2019-12-05T16:24:20.000Z",
-                "Ingredients": [
-                    {
-                        "id": 1,
-                        "name": "flour",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 1,
-                            "IngredientId": 1,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "name": "eggs",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 1,
-                            "IngredientId": 2,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 3,
-                        "name": "butter",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 1,
-                            "IngredientId": 3,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 4,
-                        "name": "sugar",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 1,
-                            "IngredientId": 4,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ],
-                "Day": [
-                    {
-                        "id": 1,
-                        "day": "Monday",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "DayMeals": {
-                            "DayId": 1,
-                            "MealId": 1,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ],
-                "User": [
-                    {
-                        "id": 1,
-                        "firstName": "Jane",
-                        "lastName": "Doe",
-                        "email": "jan.doe@email.com",
-                        "password": "password123",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "UserMeals": {
-                            "UserId": 1,
-                            "MealId": "1",
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "name": "Peanut Butter Cookies",
-                "createdAt": "2019-12-05T16:24:20.000Z",
-                "updatedAt": "2019-12-05T16:24:20.000Z",
-                "Ingredients": [
-                    {
-                        "id": 1,
-                        "name": "flour",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 2,
-                            "IngredientId": 1,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "name": "eggs",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 2,
-                            "IngredientId": 2,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 3,
-                        "name": "butter",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 2,
-                            "IngredientId": 3,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 4,
-                        "name": "sugar",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 2,
-                            "IngredientId": 4,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    },
-                    {
-                        "id": 5,
-                        "name": "peanut butter",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "MealIngredients": {
-                            "MealId": 2,
-                            "IngredientId": 5,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ],
-                "Day": [
-                    {
-                        "id": 1,
-                        "day": "Monday",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "DayMeals": {
-                            "DayId": 1,
-                            "MealId": 2,
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ],
-                "User": [
-                    {
-                        "id": 1,
-                        "firstName": "Jane",
-                        "lastName": "Doe",
-                        "email": "jan.doe@email.com",
-                        "password": "password123",
-                        "createdAt": "2019-12-05T16:24:20.000Z",
-                        "updatedAt": "2019-12-05T16:24:20.000Z",
-                        "UserMeals": {
-                            "UserId": 1,
-                            "MealId": "2",
-                            "createdAt": "2019-12-05T16:24:20.000Z",
-                            "updatedAt": "2019-12-05T16:24:20.000Z"
-                        }
-                    }
-                ]
-            }
-        ]
+
+// Authentication middleware that works with localStrategy from passport
+// Valid login will go to user dashboard. Invalid will redirect back to login page
+// Password is hashed via user model setup
+router.post("/login", 
+    passport.authenticate("local"), 
+    (req, res) => {
+        res.redirect("/dashboard");
     }
-    // once the sequelize call is done, replace this dummyData variable below with the data object from the database
-    res.render("dashboard", dummyData)
+);
+
+router.get("/signup", (req, res) => {
+    res.render("signup")
 })
+
+// Successful user sign up, auto logins the user. Error msg if unsuccessful
+router.post("/signup", (req, res) => {
+    db.User.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    }).then( () => {
+        res.redirect(307, "/login")
+    }).catch( (err) => {
+        console.log(err);
+        res.status(401).end();
+    });
+});
+
+// Logout and redirect to app homepage
+router.get("/logout", (req, res) => {
+    req.logout() // Destroys the cookies/session
+    req.flash('success', "You're logged out now. Bon appétit!")
+    res.redirect("/")
+});
+
+//Retrieving user dashboard with corresponding data
+router.get("/dashboard", 
+    (req, res, next) => {
+        if(req.isAuthenticated()) {
+            return next()
+        }
+        res.redirect("/login");
+    },
+    (req, res) =>{
+        // sequelize call to the db to get all meals for the user
+        db.UserMeals.findAll({
+            where: {
+                UserId: req.user.id
+            }
+        })
+        .then(meals => {
+            // once the sequelize call is done, display associated meals to dashboard
+            res.render("dashboard", meals)
+        })
+})
+
+
+// MUST BE LAST. Safety net catch-all route for the clowns who try entering bad routes.
+router.get("*", (req, res) => {
+    res.render("index")
+});
 
 module.exports = router;

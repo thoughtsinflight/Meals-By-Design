@@ -21,10 +21,18 @@ $("#signUpForm").on("submit", (event) => {
         password: $("#newPassword").val(),
         passwordConfirm: $("#newPasswordConfirm").val()
     };
-     
-    if (newUser.password !== newUser.passwordConfirm){
-        alert("Password confirmation must match password");
+
+    function passwordCheck(input) {
+        
+        if (newUser.password !== newUser.passwordConfirm){
+            $("#passwordError").show()
+            return
+        }else {
+            $("#passwordError").hide()
+            return input
+        }
     }
+     
 
     $.ajax({
         url: "/api/signup",

@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     //req.body.ingredients should be an array of objects of the format:
     // [{name: "flour"}, {name: "butter"}]
     //need to get user id from session here.
-    const userId = 1;
+    const userId = 1; //req.body.IDFromFrontEnd
     const { name: mealName, ingredients, dayId } = req.body;
     //Find Day
     const day = await Day.findByPk(dayId);
