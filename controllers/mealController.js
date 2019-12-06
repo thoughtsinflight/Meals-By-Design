@@ -7,21 +7,18 @@ const Ingredient = db.sequelize.import(path.resolve(__dirname, "../models/ingred
 const Day = db.sequelize.import(path.resolve(__dirname, "../models/day.js"));
 const User = db.sequelize.import(path.resolve(__dirname, "../models/user.js"));
 
-
 //create
 router.post("/", async (req, res) => {
-    //req.body.ingredients should be an array of objects of the format:
-    // [{name: "flour"}, {name: "butter"}]
     //need to get user id from session here.
-    const userId = 1; //req.body.IDFromFrontEnd
-    const { name: mealName, ingredients, dayId } = req.body;
+    const userId = 1;
+    const {dayId, name, ingredients} = req.body.data;
     //Find Day
     const day = await Day.findByPk(dayId);
     //Find User
     const user = await User.findByPk(userId);
     //Find or Create meal
     const [meal] = await Meal.findOrCreate({
-        where: { name: mealName }
+        where: { name: name }
     });
 
     await meal.setDay(day);
@@ -33,11 +30,8 @@ router.post("/", async (req, res) => {
     });
 
     const currentIngredients = await meal.getIngredients();
-    res.send({ day, meal, currentIngredients });
+    res.send({ data: { day, meal, currentIngredients } });
 });
-
-
-//get - read
 
 //get all meals sans ingredients
 router.get("/", (req, res) => {
@@ -52,7 +46,7 @@ router.get("/:id", (req, res) => {
 //get meal by id and its associated ingredients
 router.get("/:id/ingredients", async (req, res) => {
     const meal = await Meal.findOne({
-        where: {id: req.params.id},
+        where: { id: req.params.id },
         include: [
             {
                 model: Ingredient,

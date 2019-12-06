@@ -31,7 +31,8 @@ router.get("/:id/meals", async (req, res) => {
                     id: userId
                 }
             }
-        ]
+        ],
+        nest: true
     });
 
     res.json({ meals });
