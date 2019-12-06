@@ -28,7 +28,7 @@ router.post("/login",
 );
 
 router.get("/signup", (req, res) => {
-    res.render("signup")
+    res.render("signUp")
 })
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
