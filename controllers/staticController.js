@@ -51,8 +51,10 @@ router.get("/dashboard",
     (req, res, next) => {
         if(req.isAuthenticated()) {
             return next()
+        }else{
+            res.redirect("/login");
+            $("#errMsg").text("Incorrect email and/or password entered.")
         }
-        res.redirect("/login");
     },
     (req, res) =>{
         // sequelize call to the db to get all meals for the user

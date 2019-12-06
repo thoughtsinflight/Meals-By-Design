@@ -29,7 +29,7 @@ module.exports = {
         validate: {
           isEmail: {
             args: true,
-            msg: "Email must have valid format (Ex: janedoe@gmail.com)."
+            msg: "Email doesn't have valid format"
           }
         },
         sanitizer: {
@@ -38,7 +38,6 @@ module.exports = {
           }
         }
       },
-      // Password must be between 8 and 120 characters in length
       password: {
         type: Sequelize.STRING,
         allowNull: false,

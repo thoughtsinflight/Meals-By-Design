@@ -1,14 +1,14 @@
-$("#loginForm").on("submit", (event) => {
-    event.preventDefault()
+$("#loginButton").on("click", (event) => {
+    const userData = {
+        email: $("#existingEmail").val(),
+        password: $("#existingPassword").val()
+    }
 
-    $.ajax({
-        url: "/api/login",
-        method: "POST",
-        data: {
-            email: $("#existingEmail").val().trim(),
-            password: $("#existingPassword").val()
-        }
-    });
+    if(userData.email === "" || userData.password === "") {
+        event.preventDefault()
+        $("#errMsg").text("Email and/or password field cannot be blank.")
+    }
+
 });
 
 $("#signUpForm").on("submit", (event) => {
