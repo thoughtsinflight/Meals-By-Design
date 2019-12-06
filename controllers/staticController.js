@@ -89,7 +89,6 @@ router.get("/dashboard",
             nest: true
         }).then((meals) => {
             const parsed = JSON.parse(JSON.stringify(meals));
-            console.log(parsed);
             res.render("dashboard", {
                 meals: parsed, helpers: {
                     json: function (ingredient) {
@@ -111,26 +110,25 @@ router.get("/groceryList", (req, res) => {
     //need to get user id from session here.
     //const userId = 1;
     const userId = req.user.id;
-    Ingredient.findAll({
+    Meal.findAll({
         include: [
             {
-                model: Meal,
-                as: "Meal",
-                include: [
-                    {
-                        model: User,
-                        as: "User",
-                        where: {
-                            id: userId
-                        }
-                    }
-                ]
+                model: Ingredient,
+                as: "Ingredients"
+            },
+            {
+                model: User,
+                as: "User",
+                where: {
+                    id: userId
+                }
             }
-        ]
+        ],
+        nested: true
     }).then((ingredients) => {
         const parsed = JSON.parse(JSON.stringify(ingredients));
         res.render("groceryList", {
-            ingredients: parsed, helpers: {
+            meals: parsed, helpers: {
                 json: function (ingredient) {
                     return JSON.stringify(ingredient);
                 },

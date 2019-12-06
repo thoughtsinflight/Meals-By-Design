@@ -1,12 +1,19 @@
-
-    <div class="grid-container">
-        <div class="card">
-            <h3>Your Grocery List</h3>
-            <div class="card-section">
-                {{!-- GROCERY LIST GENERATED HERE --}}
-                {{#each ingredients}}
-                <div>{{{name this}}}</div>
+<div class="grid-container">
+    <div class="card">
+        <h3>Your Grocery List</h3>
+        <div class="card-section">
+            {{!-- GROCERY LIST GENERATED HERE --}}
+            <ul>
+                {{#each meals}}
+                <li>{{{name this}}}
+                    <ul>
+                        {{#each Ingredients}}
+                        <li>{{{name this}}}</li>
+                        {{/each}}
+                    </ul>
+                </li>
                 {{/each}}
-            </div>
+            </ul>
         </div>
     </div>
+</div>
