@@ -6,42 +6,47 @@ $("#loginButton").on("click", (event) => {
 
     if(userData.email === "" || userData.password === "") {
         event.preventDefault()
-        $("#errMsg").text("Email and/or password field cannot be blank.")
+        $("#errMsg").text("ERROR: Email and/or password field cannot be blank.")
     }
 
 });
 
-$("#signUpForm").on("submit", (event) => {
-    event.preventDefault()
-
-    let newUser = {    
+$("#signupButton").on("click", (event) => {
+    const newUser = {    
         firstName: $("#newFirstName").val().trim(),
         lastName: $("#newLastName").val().trim(),
         email: $("#newEmail").val().trim(),
         password: $("#newPassword").val(),
         passwordConfirm: $("#newPasswordConfirm").val()
     };
+    // async function checkEmail(input) {
+    //     const available = await $.ajax(input)
+    // }
+    if(newUser.firstName === "" || newUser.lastName === "" || newUser.email === "" || newUser.password === ""){
+        event.preventDefault()
+        $(".errMsg").text("ERROR: Form fields cannot be blank!")
+        setTimeout(() => {
+            $(".errMsg").text("")
+        }, 1500)
+    } else if(newUser.password.length < 8 || newUser.password.length > 120){
+        event.preventDefault()
+        $("#newPassword").val("")
+        $("#newPasswordConfirm").val("")
 
-    function passwordCheck(input) {
-        
-        if (newUser.password !== newUser.passwordConfirm){
-            $("#passwordError").show()
-            return
-        }else {
-            $("#passwordError").hide()
-            return input
-        }
+        $("#passErr").text("ERROR: Password must be between 8 and 120 characters.")
+        setTimeout(() => {
+            $("#passErr").text("")
+        }, 2000)
     }
-     
+        
+    if(newUser.password !== newUser.passwordConfirm){
+        event.preventDefault()
+        $("#newPassword").val("")
+        $("#newPasswordConfirm").val("")
 
-    $.ajax({
-        url: "/api/signup",
-        method: "POST",
-        data: {
-            firstName: $("#newFirstName").val().trim(),
-            lastName: $("#newLastName").val().trim(),
-            email: $("#newEmail").val().trim(),
-            password: $("#newPassword").val()    
-        }
-    });
+        $("#confirmErr").text("Password confirmation must match password.")
+        setTimeout(() => {
+            $("#confirmErr").text("")
+        }, 2000)
+    }
 });

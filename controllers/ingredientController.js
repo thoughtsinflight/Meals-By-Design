@@ -13,13 +13,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-    Ingredient.findbyPK(req.params.id).then(ingredient => (res.send(ingredient)));
+    Ingredient.findbyPk(req.params.id).then(ingredient => (res.send(ingredient)));
 });
 
 //get All Ingredients for user
 router.get("/user/grocery-list", async (req, res) => {
     //need to get user id from session here.
-    const userId = 1;
+    const userId = req.body.id;
     const ingredients = await Ingredient.findAll({
         include: [ 
             {
@@ -29,8 +29,8 @@ router.get("/user/grocery-list", async (req, res) => {
                     {
                         model: User,
                         as: "User",
-                        where:{
-                            id:userId
+                        where: {
+                            id: userId
                         }
                     }
                 ]

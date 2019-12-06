@@ -3,6 +3,7 @@
     <div class="card">
         <h3 class="text-center">Sign Up</h3><hr>
         <div class="card-section">
+            <p class="errMsg"> </p>
             <form id="signUpForm" action="/signup" method="POST">
                 <div class="medium-6 cell">
                     <label>First Name:
@@ -21,13 +22,15 @@
                 </div>
                 <div class="medium-6 cell">
                     <label>Password:
-                        <input name="password" type="password" placeholder="Password" id="newPassword">
+                        <input name="password" type="password" placeholder="Pick a password" id="newPassword">
                     </label>
+                    <p id="passErr"></p>
                 </div>
                 <div class="medium-6 cell">
                     <label>Confirm Password:
-                        <input name="passwordConfirm" type="password" placeholder="Confirm Password" id="newPasswordConfirm">
+                        <input name="passwordConfirm" type="password" placeholder="Enter the password again" id="newPasswordConfirm">
                     </label>
+                    <p id="confirmErr"></p>
                 </div>
                 <div class="grid-x">
                     <div class="cell">
@@ -39,4 +42,4 @@
     </div>
 </div>
   
-{{!-- <script src="/js/login_signup.js"></script> --}}
+<script src="/js/login_signup.js"></script>

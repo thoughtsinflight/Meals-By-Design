@@ -31,20 +31,38 @@ router.get("/signup", (req, res) => {
     res.render("signup")
 })
 
+function uniqueEmail(email) {
+    db.User.count({ where: {email: email} })
+        .then(count => {
+            if(count !== 0) {
+                return false
+            } else { return true }
+        });
+};
+
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
-router.post("/signup", (req, res) => {
-    db.User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    }).then(() => {
-        res.redirect(307, "/login")
-    }).catch((err) => {
-        console.log(err);
-        res.status(401).end();
+router.post("/signup",
+    (req, res) => {
+        // uniqueEmail(email).then(uniqueUser => {
+        //     if (uniqueUser) {
+        //         res.send({
+        //             message: "There's already a user with that email address."
+        //         })
+        //     } else {
+                db.User.create({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: req.body.password
+                }).then(() => {
+                    res.redirect(307, "/login")
+                }).catch(() => {
+                    // console.log(err.errors.ValidationErrorItem[1]);
+                    res.status(401, {message: "there's already a user with this email."});
+                });
+        //     }
+        // })
     });
-});
 
 // Logout and redirect to app homepage
 router.get("/logout", (req, res) => {
@@ -60,12 +78,11 @@ router.get("/dashboard",
             return next()
         }else{
             res.redirect("/login");
-            $("#errMsg").text("Incorrect email and/or password entered.")
         }
     },
     (req, res) => {
+    // sequelize call to the db to get all meals
         const dayId = moment().day() === 0 ? 7 : moment().day();
-        //const dayId = 4;
         const userId = req.user.id;
         Meal.findAll({
             include: [
@@ -90,6 +107,8 @@ router.get("/dashboard",
             ],
             nest: true
         }).then((meals) => {
+            // after receiving the meals from the db and assigning them to a variable * meals *
+            // inside the function =>  res.render("dashboard", meals)
             const parsed = JSON.parse(JSON.stringify(meals));
             res.render("dashboard", {
                 meals: parsed, helpers: {
@@ -105,13 +124,8 @@ router.get("/dashboard",
     })
 
 router.get("/groceryList", (req, res) => {
-    // sequelize call to the db to get all meals
-    // after receiving the meals from the db and assigning them to a variable * meals *
-    // inside the function =>  res.render("dashboard", meals)
-
     //need to get user id from session here.
-    //const userId = 1;
-    const userId = req.user.id;
+    const userId = req.body.id;
     Meal.findAll({
         include: [
             {
@@ -140,7 +154,6 @@ router.get("/groceryList", (req, res) => {
             }
         });
     });
-    // once the sequelize call is done, replace this dummyData variable below with the data object from the database
 });
 
 module.exports = router;
