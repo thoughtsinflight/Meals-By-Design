@@ -28,47 +28,29 @@ router.post("/login",
 );
 
 router.get("/signup", (req, res) => {
-    res.render("signUp")
+    console.log(req.query)
+    res.render("signup",{query:req.query})
 })
-
-function uniqueEmail(email) {
-    db.User.count({ where: {email: email} })
-        .then(count => {
-            if(count !== 0) {
-                return false
-            } else { return true }
-        });
-};
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
 router.post("/signup",
     (req, res) => {
-        // uniqueEmail(email).then(uniqueUser => {
-        //     if (uniqueUser) {
-        //         res.send({
-        //             message: "There's already a user with that email address."
-        //         })
-        //     } else {
-                db.User.create({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    email: req.body.email,
-                    password: req.body.password
-                }).then(() => {
-                    res.redirect(307, "/login")
-                }).catch(() => {
-                    // console.log(err.errors.ValidationErrorItem[1]);
-                    res.status(401, {message: "there's already a user with this email."});
-                });
-        //     }
-        // })
+        db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+        }).then(() => {
+            res.redirect(307, "/login")
+        }).catch(() => {
+            res.redirect("/signup?invalidRequest=Email already in use")
+        });
     });
 
 // Logout and redirect to app homepage
 router.get("/logout", (req, res) => {
     req.logout() // Destroys the cookies/session
-    req.flash('success', "You're logged out now. Bon appétit!")
-    res.redirect("/")
+    res.redirect("/logout?success=Logged out. Bon appétit!")
 });
 
 //Retrieving user dashboard with corresponding data

@@ -7,8 +7,10 @@ $("#loginButton").on("click", (event) => {
     if(userData.email === "" || userData.password === "") {
         event.preventDefault()
         $("#errMsg").text("ERROR: Email and/or password field cannot be blank.")
+        setTimeout(() => {
+            $(".errMsg").text("")
+        }, 1500)
     }
-
 });
 
 $("#signupButton").on("click", (event) => {
@@ -19,9 +21,7 @@ $("#signupButton").on("click", (event) => {
         password: $("#newPassword").val(),
         passwordConfirm: $("#newPasswordConfirm").val()
     };
-    // async function checkEmail(input) {
-    //     const available = await $.ajax(input)
-    // }
+
     if(newUser.firstName === "" || newUser.lastName === "" || newUser.email === "" || newUser.password === ""){
         event.preventDefault()
         $(".errMsg").text("ERROR: Form fields cannot be blank!")

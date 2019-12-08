@@ -3,7 +3,7 @@
     <div class="card">
         <h3 class="text-center">Sign Up</h3><hr>
         <div class="card-section">
-            <p class="errMsg"> </p>
+            <span class="errMsg" style="color:red; font-weight: bold;"> </span>
             <form id="signUpForm" action="/signup" method="POST">
                 <div class="medium-6 cell">
                     <label>First Name:
@@ -16,21 +16,23 @@
                     </label>
                 </div>
                 <div class="medium-6 cell">
-                    <label>Enter Email:
+                    <label>Enter Email:   {{#if query.invalidRequest}}
+                        <span style="color:red; font-weight: bold; font-size:large; padding-left: 8px;">{{ query.invalidRequest }}</span>  
+                    {{/if}}
                         <input name="email" type="email" placeholder="Email" id="newEmail">
                     </label>
                 </div>
                 <div class="medium-6 cell">
+                    <span id="passErr" style="color:red; font-weight: bold;"></span>
                     <label>Password:
                         <input name="password" type="password" placeholder="Pick a password" id="newPassword">
                     </label>
-                    <p id="passErr"></p>
                 </div>
                 <div class="medium-6 cell">
+                    <span id="confirmErr" style="color:red; font-weight: bold;"></span>
                     <label>Confirm Password:
                         <input name="passwordConfirm" type="password" placeholder="Enter the password again" id="newPasswordConfirm">
                     </label>
-                    <p id="confirmErr"></p>
                 </div>
                 <div class="grid-x">
                     <div class="cell">
