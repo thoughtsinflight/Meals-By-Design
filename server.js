@@ -65,19 +65,6 @@ app.use("*", (req, res) => {
     res.render("index")
 });
 
-// helper for "if a = b" logic in handlebars
-// var hbs = exphbs.create({
-//     // Specify helpers which are only registered on this instance.
-//     helpers: {
-//         'if_eq': function(a, b, opts) {
-//             if (a == b) {
-//                 return opts.fn(this);
-//             } else {
-//                 return opts.inverse(this);
-//             }
-//     }
-// });
-
 //Synchronize my schema
 //This will blow out the seed data, so removing for api testing.
 //{ force: process.env.NODE_ENV !== "production" }

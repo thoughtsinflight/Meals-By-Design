@@ -1,35 +1,20 @@
 'use strict';
+//need to encrypt seeder password as well
+const salt = bcrypt.genSaltSync(13);
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
     return queryInterface.bulkInsert('Users', [{
       firstName: 'Jane',
       lastName: 'Doe',
-      email: 'jan.doe@email.com',
-      password: 'password123',
+      email: 'janedoe@gmail.com',
+      password: bcrypt.hashSync('password123', salt),
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
     return queryInterface.bulkDelete('Users', null, {});
   }
 };
