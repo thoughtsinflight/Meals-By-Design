@@ -1,9 +1,6 @@
 $(document).ready(function () {
     $(document).foundation()
-    const allMenuItems = [];
-    const allIngredients = [];
 
-    const curDay = moment().weekday(-7);
     $("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
     function clearTodaysMenu() {
@@ -38,43 +35,6 @@ $(document).ready(function () {
 
     });
 
-    // Click Listeners for all days of the week
-    // $("#mondayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("mondays menu placeholder")
-    // });
-
-    // $("#tuesdayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Tuesday Menu Placeholder")
-    // });
-
-    // $("#wednesdayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Wednesday Menu Placeholder")
-    // });
-
-    // $("#thursdayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Thursday Menu Placeholder")
-    // });
-
-    // $("#fridayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Friday Menu Placeholder")
-    // });
-
-    // $("#saturdayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Saturday Menu Placeholder")
-    // });
-
-    // $("#sundayButton").on("click", () => {
-    //     clearTodaysMenu()
-    //     $("<li>").appendTo("ul#todaysMenuSection").prepend("Sunday Menu Placeholder")
-    // })
-
-
     // Click listener for more ingredients button
     $("#moreIngredientsButton").on("click", () => {
         $(`<div class="cell ingredientForm">
@@ -93,23 +53,12 @@ $(document).ready(function () {
             name: $("#newMenuItem").val(),
             ingredients: ingredientsArray
         }
-        console.log(newMeal)
 
-        //Post request.
+        //Post meal to db.
         $.post("/api/meals", {
             data: newMeal
-        }).then(function (data) {
-            console.log(data);
+        }).then(function () {
+            location.reload()
         })
     });
-
-    //Not needed
-    // $("#generateGroceryList").on("click", (event) => {
-
-    //     $.ajax("/api/ingredients/user/grocery-list ", {
-    //         type: "GET"
-    //     }).then(function (grocerylist) {
-    //        console.log(grocerylist);
-    //     })
-    // });
 });
