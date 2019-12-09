@@ -107,7 +107,7 @@ router.get("/dashboard",
 
 router.get("/groceryList", (req, res) => {
     //need to get user id from session here.
-    const userId = req.body.id;
+    const userId = req.user.id;
     Meal.findAll({
         include: [
             {

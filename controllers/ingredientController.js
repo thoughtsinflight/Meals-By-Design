@@ -19,7 +19,7 @@ router.get("/:id", (req, res) => {
 //get All Ingredients for user
 router.get("/user/grocery-list", async (req, res) => {
     //need to get user id from session here.
-    const userId = req.body.id;
+    const userId = req.user.id;
     const ingredients = await Ingredient.findAll({
         include: [ 
             {
