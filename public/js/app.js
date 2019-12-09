@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(document).foundation()
 
-    $("#navButton").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+    $("#navButton").text(moment().format("dddd, MMMM Do, YYYY | HH:mm a"));
 
     function clearTodaysMenu() {
         $("ul#todaysMenuSection li").remove();

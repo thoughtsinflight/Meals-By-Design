@@ -1,5 +1,6 @@
 'use strict';
 //need to encrypt seeder password as well
+const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(13);
 
 module.exports = {
