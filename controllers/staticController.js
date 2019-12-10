@@ -14,42 +14,41 @@ router.get("/", (req, res) => {
 })
 
 router.get("/login", (req, res) => {
-    res.render("login")
+    res.render("login", {query: req.query})
 })
 
 // Authentication middleware that works with localStrategy from passport
 // Valid login will go to user dashboard. Invalid will redirect back to login page
 // Password is hashed via user model setup
-router.post("/login",
-    passport.authenticate("local"),
-    (req, res) => {
-        res.redirect("/dashboard");
-    }
-);
+router.post("/login", 
+    passport.authenticate("local", { 
+        successRedirect: '/dashboard',
+        failureRedirect: '/login?invalidLogin=Incorrect email or password'
+    }));
 
 router.get("/signup", (req, res) => {
-    res.render("signUp")
+    console.log(req.query)
+    res.render("signup", { query: req.query })
 })
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
-router.post("/signup", (req, res) => {
-    db.User.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    }).then(() => {
-        res.redirect(307, "/login")
-    }).catch((err) => {
-        console.log(err);
-        res.status(401).end();
+router.post("/signup",
+    (req, res) => {
+        db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+        }).then(() => {
+            res.redirect(307, "/login")
+        }).catch(() => {
+            res.redirect("/signup?invalidRequest=Email already in use")
+        });
     });
-});
 
 // Logout and redirect to app homepage
 router.get("/logout", (req, res) => {
     req.logout() // Destroys the cookies/session
-    req.flash('success', "You're logged out now. Bon appétit!")
     res.redirect("/")
 });
 
@@ -58,12 +57,13 @@ router.get("/dashboard",
     (req, res, next) => {
         if (req.isAuthenticated()) {
             return next()
+        } else {
+            res.redirect("/login");
         }
-        res.redirect("/login");
     },
     (req, res) => {
+        // sequelize call to the db to get all meals
         const dayId = moment().day() === 0 ? 7 : moment().day();
-        //const dayId = 4;
         const userId = req.user.id;
         Meal.findAll({
             include: [
@@ -88,6 +88,8 @@ router.get("/dashboard",
             ],
             nest: true
         }).then((meals) => {
+            // after receiving the meals from the db and assigning them to a variable * meals *
+            // inside the function =>  res.render("dashboard", meals)
             const parsed = JSON.parse(JSON.stringify(meals));
             res.render("dashboard", {
                 meals: parsed, helpers: {
@@ -103,12 +105,7 @@ router.get("/dashboard",
     })
 
 router.get("/groceryList", (req, res) => {
-    // sequelize call to the db to get all meals
-    // after receiving the meals from the db and assigning them to a variable * meals *
-    // inside the function =>  res.render("dashboard", meals)
-
     //need to get user id from session here.
-    //const userId = 1;
     const userId = req.user.id;
     Meal.findAll({
         include: [
@@ -138,7 +135,6 @@ router.get("/groceryList", (req, res) => {
             }
         });
     });
-    // once the sequelize call is done, replace this dummyData variable below with the data object from the database
 });
 
 module.exports = router;

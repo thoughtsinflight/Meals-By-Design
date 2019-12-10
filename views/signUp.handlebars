@@ -1,8 +1,10 @@
-<div><button class="large"></button> href="/">Home</></div>
+<h1 class="text-center"><a href="/">MealsByDesign</a></h1>
 <div class="grid-container" id="logInField">
     <div class="card">
-        <h3 class="text-center">Sign Up</h3><hr>
+        <h3 class="text-center">Sign Up</h3>
+        <hr>
         <div class="card-section">
+            <span class="errMsg" style="color:red; font-weight: bold;"> </span>
             <form id="signUpForm" action="/signup" method="POST">
                 <div class="medium-6 cell">
                     <label>First Name:
@@ -15,28 +17,35 @@
                     </label>
                 </div>
                 <div class="medium-6 cell">
-                    <label>Enter Email:
+                    <label>Enter Email: {{#if query.invalidRequest}}
+                        <span
+                            style="color:red; font-weight: bold; font-size:large; padding-left: 8px;">{{ query.invalidRequest }}</span>
+                        {{/if}}
                         <input name="email" type="email" placeholder="Email" id="newEmail">
                     </label>
                 </div>
                 <div class="medium-6 cell">
+                    <span id="passErr" style="color:red; font-weight: bold;"></span>
                     <label>Password:
-                        <input name="password" type="password" placeholder="Password" id="newPassword">
+                        <input name="password" type="password" placeholder="Pick a password" id="newPassword">
                     </label>
                 </div>
                 <div class="medium-6 cell">
+                    <span id="confirmErr" style="color:red; font-weight: bold;"></span>
                     <label>Confirm Password:
-                        <input name="passwordConfirm" type="password" placeholder="Confirm Password" id="newPasswordConfirm">
+                        <input name="passwordConfirm" type="password" placeholder="Enter the password again"
+                            id="newPasswordConfirm">
                     </label>
                 </div>
-                <div class="grid-x">
-                    <div class="cell">
-                        <button class="button primary" id="signupButton">Sign Up!</button>
-                    </div>
+                <div class="cell medium-4 text-center">
+                    <button class="button primary" id="signupButton">Sign Up!</button>
+                </div>
+                <div class="cell medium-4">
+                    <p class="text-center">Already a user? <a href="/login">Login Now</a></p>
                 </div>
             </form>
         </div>
     </div>
 </div>
-  
-{{!-- <script src="/js/login_signup.js"></script> --}}
+
+<script src="/js/login_signup.js"></script>

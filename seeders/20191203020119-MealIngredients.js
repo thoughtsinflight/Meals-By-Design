@@ -5,12 +5,6 @@ module.exports = {
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('MealIngredients', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
     */
     return queryInterface.bulkInsert('MealIngredients', [{
       MealId: 1,
@@ -72,9 +66,6 @@ module.exports = {
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('MealIngredients', null, {});
     */
     return queryInterface.bulkDelete('MealIngredients', null, {});
   }

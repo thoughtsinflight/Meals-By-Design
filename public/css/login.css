@@ -1,18 +1,13 @@
 *{
   font-family: Kalma !important;
 }
-body{
-  background-image: url(../assets/images/kitchenbackdrop.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 .formHead{
   text-align: center;
 }
 .card{
   height: 50vh;
   width: 50vw;
-  /* margin: 5vh 20vw; */
+  margin: 5vh 20vw;
   align-content: center;
   text-align: center;
   background-color: rgb(107, 181, 250);
@@ -23,8 +18,9 @@ body{
   display: flex;
   justify-content: center;
   height: 100vh;
-  flex-direction: column-reverse ;
+  flex-direction: column-reverse;
 }
+
 input{
   margin: 0;
 }

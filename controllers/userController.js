@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 // Route to collect user data for client side
 // Used for sessions
-router.get("/me", (req, res) => {
+router.get("/user", (req, res) => {
     // When no valid user is logged in, send an empty object
     if(!req.user) {
         res.json({})

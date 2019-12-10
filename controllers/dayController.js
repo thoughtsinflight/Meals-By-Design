@@ -22,7 +22,7 @@ router.get("/:id/meals", async (req, res) => {
                 as: "Day",
                 where: {
                     id: req.params.id
-                },
+                }
             },
             {
                 model: User,
@@ -34,7 +34,6 @@ router.get("/:id/meals", async (req, res) => {
         ],
         nest: true
     });
-    console.log(meals);
     res.json({ meals });
 });
 
