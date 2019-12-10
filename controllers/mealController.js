@@ -10,7 +10,7 @@ const User = db.sequelize.import(path.resolve(__dirname, "../models/user.js"));
 //create
 router.post("/", async (req, res) => {
     //need to get user id from session here.
-    const userId = req.body.id;
+    const userId = req.user.id;
     const {dayId, name, ingredients} = req.body.data;
     //Find Day
     const day = await Day.findByPk(dayId);

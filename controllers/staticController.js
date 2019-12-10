@@ -14,29 +14,17 @@ router.get("/", (req, res) => {
 })
 
 router.get("/login", (req, res) => {
-    res.render("login")
+    res.render("login", {query: req.query})
 })
 
 // Authentication middleware that works with localStrategy from passport
 // Valid login will go to user dashboard. Invalid will redirect back to login page
 // Password is hashed via user model setup
-router.post("/login", (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-        if (err) {
-            return next(err)
-        }
-        if (!user) {
-            return res.redirect("/login?invalidLogin=Incorrect email or password")
-        }
-        req.login(user, (err) => {
-            if (err) {
-                return next(err)
-            } else {
-                res.redirect("/dashboard")
-            }
-        });
-    })(req, res, next)
-});
+router.post("/login", 
+    passport.authenticate("local", { 
+        successRedirect: '/dashboard',
+        failureRedirect: '/login?invalidLogin=Incorrect email or password'
+    }));
 
 router.get("/signup", (req, res) => {
     console.log(req.query)
