@@ -22,28 +22,25 @@ router.get("/login", (req, res) => {
 // Password is hashed via user model setup
 router.post("/login", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
-        if(err) {
+        if (err) {
             return next(err)
         }
-        if (!user){
+        if (!user) {
             return res.redirect("/login?invalidLogin=Incorrect email or password")
         }
         req.login(user, (err) => {
-            if(err){
+            if (err) {
                 return next(err)
+            } else {
+                res.redirect("/dashboard")
             }
-            return res.redirect("/user/dashboard")
         });
     })(req, res, next)
-        // {
-        //     successRedirect: "/dashboard",
-        //     failureRedirect: 
-        // })
 });
 
 router.get("/signup", (req, res) => {
     console.log(req.query)
-    res.render("signup",{query:req.query})
+    res.render("signup", { query: req.query })
 })
 
 // Successful user sign up, auto logins the user. Error msg if unsuccessful
@@ -64,20 +61,20 @@ router.post("/signup",
 // Logout and redirect to app homepage
 router.get("/logout", (req, res) => {
     req.logout() // Destroys the cookies/session
-    res.redirect("/logout?success=Logged out. Bon appétit!")
+    res.redirect("/")
 });
 
 //Retrieving user dashboard with corresponding data
-router.get("/user/dashboard",
+router.get("/dashboard",
     (req, res, next) => {
         if (req.isAuthenticated()) {
             return next()
-        }else{
+        } else {
             res.redirect("/login");
         }
     },
     (req, res) => {
-    // sequelize call to the db to get all meals
+        // sequelize call to the db to get all meals
         const dayId = moment().day() === 0 ? 7 : moment().day();
         const userId = req.user.id;
         Meal.findAll({

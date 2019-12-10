@@ -1,14 +1,16 @@
-<div><button class="large" href="/">Home</button></div>
+<h1 class="text-center"><a href="/">MealsByDesign</a></h1>
 <div class="grid-container" id="logInField">
     <div class="card">
-        <h3 class="text-center">Login</h3><hr>
+        <h3 class="text-center">Login</h3>
+        <hr>
         <div class="card-section">
             <form id="loginForm" action="/login" method="POST">
                 <div class="medium-6 cell">
                     <span id="errMsg" style="color: red; font-weight: bold;"> </span>
-                    <label>Email:  {{#if query.invalidLogin}}
-                        <span style="color:red; font-weight: bold; font-size:large; padding-left: 8px;">{{ query.invalidLogin }}</span>  
-                    {{/if}}
+                    <label>Email: {{#if query.invalidLogin}}
+                        <span
+                            style="color:red; font-weight: bold; font-size:large; padding-left: 8px;">{{ query.invalidLogin }}</span>
+                        {{/if}}
                         <input type="email" name="email" id="existingEmail" placeholder="Email">
                     </label>
                 </div>
@@ -17,10 +19,11 @@
                         <input type="password" name="password" id="existingPassword" placeholder="Password">
                     </label>
                 </div>
-                <div class="grid-x">
-                    <div class="cell">
-                        <button class="button primary" id="loginButton">Login!</button>
-                    </div>
+                <div class="cell medium-4 text-center">
+                    <button class="button primary" id="loginButton">Login!</button>
+                </div>
+                <div class="cell medium-4">
+                    <p class="text-center">Not a user yet? <a href="/signup">Sign Up!</a></p>
                 </div>
             </form>
         </div>

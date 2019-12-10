@@ -3,7 +3,7 @@
   }
 body{
     background-image: url(../assets/images/kitchenbackdrop.jpg);
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: cover;
 }
 h4, h1, h2, h3, label, li, #recipeName {
