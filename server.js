@@ -56,7 +56,7 @@ app.use(staticRouter);
 app.use("/api/ingredients", ingredientRouter);
 app.use("/api/meals", mealRouter);
 app.use("/api/days", dayRouter);
-app.use("/api/users", userRouter);
+// app.use("/api/users", userRouter);
 
 // MUST BE LAST. Safety net catch-all route for the clowns who try entering bad routes.
 app.use("*", (req, res) => {

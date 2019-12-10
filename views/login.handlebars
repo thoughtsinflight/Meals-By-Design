@@ -6,7 +6,9 @@
             <form id="loginForm" action="/login" method="POST">
                 <div class="medium-6 cell">
                     <span id="errMsg" style="color: red; font-weight: bold;"> </span>
-                    <label>Email:
+                    <label>Email:  {{#if query.invalidLogin}}
+                        <span style="color:red; font-weight: bold; font-size:large; padding-left: 8px;">{{ query.invalidLogin }}</span>  
+                    {{/if}}
                         <input type="email" name="email" id="existingEmail" placeholder="Email">
                     </label>
                 </div>
