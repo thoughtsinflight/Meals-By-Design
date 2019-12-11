@@ -64,9 +64,7 @@ app.use("*", (req, res) => {
 });
 
 //Synchronize my schema
-//This will blow out the seed data, so removing for api testing.
-//{ force: process.env.NODE_ENV !== "production" }
-db.sequelize.sync({}).then(() => {
+db.sequelize.sync({ force: process.env.NODE_ENV !== "production" }).then(() => {
     app.listen(PORT, () => {
         console.log("Server listening on: http://localhost:" + PORT);
     });
